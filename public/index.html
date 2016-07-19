@@ -226,6 +226,123 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/19/Android-Studio：Gradle常用命令/" itemprop="url">
+                  Android Studio：Gradle常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-19T15:33:51+08:00" content="2016-07-19">
+              2016-07-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/19/Android-Studio：Gradle常用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/19/Android-Studio：Gradle常用命令/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Android Studio中自带Terminal，可以直接使用gradle命令，不必另开命令窗口，相当方便，下面总结一下常用的命令：</p>
+<ul>
+<li><p>1.查看Gradle版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.清除app目录下的build文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.检查依赖并编译打包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew build</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.编译并打Debug包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew assembleDebug</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.编译并打Release包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew assembleRelease</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.结合productFlavors可以编译指定Flavor的debug或release版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./gradlew assembleFlavor     </span><br><span class="line">./gradlew assembleFlavorDebug</span><br><span class="line">./gradlew assembleFlavorRelease</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="http://ckj375.github.io/2016/07/19/Android-Studio%EF%BC%9AGradle%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank" rel="external">阅读原文</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/" itemprop="url">
                   Ubuntu下安装配置zsh和oh my zsh
                 </a>
@@ -623,7 +740,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
