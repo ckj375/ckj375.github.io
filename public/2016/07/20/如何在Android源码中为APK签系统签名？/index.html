@@ -57,31 +57,22 @@
 
 
 
-<meta name="description" content="zsh优势：自动补全功能强大和很高的可配置性
-查看当前系统装了哪些shellcat /etc/shells
-当前正在运行的是哪个版本的shellecho $SHELL
-安装zshsudo apt-get zsh
-切换zshchsh -s /bin/bash(非实时，需重启)
-安装oh my zshwget –no-check-certificate https://github.com/robby">
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
+
+找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu下安装配置zsh和oh my zsh">
-<meta property="og:url" content="http://yoursite.com/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/index.html">
+<meta property="og:title" content="如何在Android源码中为APK签系统签名？">
+<meta property="og:url" content="http://yoursite.com/2016/07/20/如何在Android源码中为APK签系统签名？/index.html">
 <meta property="og:site_name" content="皮皮熊的博客">
-<meta property="og:description" content="zsh优势：自动补全功能强大和很高的可配置性
-查看当前系统装了哪些shellcat /etc/shells
-当前正在运行的是哪个版本的shellecho $SHELL
-安装zshsudo apt-get zsh
-切换zshchsh -s /bin/bash(非实时，需重启)
-安装oh my zshwget –no-check-certificate https://github.com/robby">
-<meta property="og:updated_time" content="2016-07-15T09:34:12.000Z">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
+
+找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
+<meta property="og:updated_time" content="2016-07-20T09:08:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu下安装配置zsh和oh my zsh">
-<meta name="twitter:description" content="zsh优势：自动补全功能强大和很高的可配置性
-查看当前系统装了哪些shellcat /etc/shells
-当前正在运行的是哪个版本的shellecho $SHELL
-安装zshsudo apt-get zsh
-切换zshchsh -s /bin/bash(非实时，需重启)
-安装oh my zshwget –no-check-certificate https://github.com/robby">
+<meta name="twitter:title" content="如何在Android源码中为APK签系统签名？">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
+
+找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
 
 
 
@@ -99,7 +90,7 @@
   };
 </script>
 
-  <title> Ubuntu下安装配置zsh和oh my zsh | 皮皮熊的博客 </title>
+  <title> 如何在Android源码中为APK签系统签名？ | 皮皮熊的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -239,7 +230,7 @@
             
             
               
-                Ubuntu下安装配置zsh和oh my zsh
+                如何在Android源码中为APK签系统签名？
               
             
           </h1>
@@ -251,8 +242,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-15T17:09:36+08:00" content="2016-07-15">
-              2016-07-15
+            <time itemprop="dateCreated" datetime="2016-07-20T16:42:19+08:00" content="2016-07-20">
+              2016-07-20
             </time>
           </span>
 
@@ -262,8 +253,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/" itemprop="commentsCount"></span>
+                <a href="/2016/07/20/如何在Android源码中为APK签系统签名？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/如何在Android源码中为APK签系统签名？/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -285,17 +276,18 @@
       
 
       
-        <h2 id="zsh优势：自动补全功能强大和很高的可配置性"><a href="#zsh优势：自动补全功能强大和很高的可配置性" class="headerlink" title="zsh优势：自动补全功能强大和很高的可配置性"></a>zsh优势：自动补全功能强大和很高的可配置性</h2><ol>
-<li>查看当前系统装了哪些shell<br>cat /etc/shells</li>
-<li>当前正在运行的是哪个版本的shell<br>echo $SHELL</li>
-<li>安装zsh<br>sudo apt-get zsh</li>
-<li>切换zsh<br>chsh -s /bin/bash(非实时，需重启)</li>
-<li>安装oh my zsh<br>wget –no-check-certificate <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</li>
-<li><p>设置zsh的参数<br>安装完zsh后，在home目录下会有一个名为.zshrc的隐藏文件，可以根据个人习惯配置zsh的参数<br>oh my zsh 在安装时已经自动读取当前的环境变量并进行了设置，你可以继续追加其他环境变量</p>
-<p>oh my zsh各式各样的主题预览：<a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/wiki/themes</a></p>
-<p><a href="http://ckj375.github.io/2016/07/15/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh-my-zsh/" target="_blank" rel="external">阅读原文</a></p>
+        <p>&#160; &#160; &#160; &#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但<br>往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.</p>
+<ol>
+<li><p>找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platform.pk8两个文件</p>
+</li>
+<li><p>把签名文件复制到\out\host\linux-x86\framework目录下</p>
+</li>
+<li><p>把预签名的apk复制到\out\host\linux-x86\framework目录下</p>
+</li>
+<li><p>把编译路径切换到\out\host\linux-x86\framework目录下，使用java -jar signapk.jar platform.x509.pem platform.pk8 in.apk(预签名的apk) out.apk(签名之后的apk)</p>
 </li>
 </ol>
+<p><a href="http://ckj375.github.io/2016/07/20/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E6%BA%90%E7%A0%81%E4%B8%AD%E4%B8%BAAPK%E7%AD%BE%E7%B3%BB%E7%BB%9F%E7%AD%BE%E5%90%8D%EF%BC%9F/" target="_blank" rel="external">阅读原文</a></p>
 
       
     </div>
@@ -313,17 +305,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/10/Android内存泄露总结/" rel="next" title="Android内存泄露总结">
-                <i class="fa fa-chevron-left"></i> Android内存泄露总结
+              <a href="/2016/07/19/Android-Studio：Gradle常用命令/" rel="next" title="Android Studio：Gradle常用命令">
+                <i class="fa fa-chevron-left"></i> Android Studio：Gradle常用命令
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/19/Android-Studio：Gradle常用命令/" rel="prev" title="Android Studio：Gradle常用命令">
-                Android Studio：Gradle常用命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -349,8 +337,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/"
-           data-title="Ubuntu下安装配置zsh和oh my zsh" data-url="http://yoursite.com/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/">
+      <div class="ds-thread" data-thread-key="2016/07/20/如何在Android源码中为APK签系统签名？/"
+           data-title="如何在Android源码中为APK签系统签名？" data-url="http://yoursite.com/2016/07/20/如何在Android源码中为APK签系统签名？/">
       </div>
     
   </div>
@@ -432,7 +420,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh优势：自动补全功能强大和很高的可配置性"><span class="nav-number">1.</span> <span class="nav-text">zsh优势：自动补全功能强大和很高的可配置性</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

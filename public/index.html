@@ -226,6 +226,113 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/20/如何在Android源码中为APK签系统签名？/" itemprop="url">
+                  如何在Android源码中为APK签系统签名？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T16:42:19+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/20/如何在Android源码中为APK签系统签名？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/如何在Android源码中为APK签系统签名？/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#160; &#160; &#160; &#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但<br>往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.</p>
+<ol>
+<li><p>找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platform.pk8两个文件</p>
+</li>
+<li><p>把签名文件复制到\out\host\linux-x86\framework目录下</p>
+</li>
+<li><p>把预签名的apk复制到\out\host\linux-x86\framework目录下</p>
+</li>
+<li><p>把编译路径切换到\out\host\linux-x86\framework目录下，使用java -jar signapk.jar platform.x509.pem platform.pk8 in.apk(预签名的apk) out.apk(签名之后的apk)</p>
+</li>
+</ol>
+<p><a href="http://ckj375.github.io/2016/07/20/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E6%BA%90%E7%A0%81%E4%B8%AD%E4%B8%BAAPK%E7%AD%BE%E7%B3%BB%E7%BB%9F%E7%AD%BE%E5%90%8D%EF%BC%9F/" target="_blank" rel="external">阅读原文</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/19/Android-Studio：Gradle常用命令/" itemprop="url">
                   Android Studio：Gradle常用命令
                 </a>
@@ -740,7 +847,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
