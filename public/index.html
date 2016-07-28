@@ -226,6 +226,112 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/28/搬瓦工VPS搭建PPTP-VPN/" itemprop="url">
+                  搬瓦工VPS搭建PPTP VPN
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-28T14:51:32+08:00" content="2016-07-28">
+              2016-07-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/28/搬瓦工VPS搭建PPTP-VPN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/搬瓦工VPS搭建PPTP-VPN/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>之前一直在用神器Lantern和Nydus(20元一个月)，感觉还不错，但是各有各的不足！<br>于是开始自己动手折腾用VPS搭建VPN…<br>上网逛了一圈，最后选择了搬瓦工的VPS：512RAM，10G SSD，1000G/月，19.9$/年，用了个优惠码，最后用支付宝付了19刀。</p>
+<p>下面具体介绍下如何创建PPTP VPN:</p>
+<h3 id="1-进入搬瓦工控制面板界面"><a href="#1-进入搬瓦工控制面板界面" class="headerlink" title="1.进入搬瓦工控制面板界面"></a>1.进入搬瓦工控制面板界面</h3><p>点击stop按钮，选择左侧的Install new OS，推荐装Centos 6 x86</p>
+<p><img src="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/control_panel.png" alt="img"></p>
+<h3 id="2-安装完毕后可以直接选择Root-shell-interactive启动命令窗口"><a href="#2-安装完毕后可以直接选择Root-shell-interactive启动命令窗口" class="headerlink" title="2.安装完毕后可以直接选择Root shell-interactive启动命令窗口"></a>2.安装完毕后可以直接选择Root shell-interactive启动命令窗口</h3><p><img src="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/shell_window.png" alt="img"></p>
+<h3 id="3-安装一键PPTP-VPN"><a href="#3-安装一键PPTP-VPN" class="headerlink" title="3.安装一键PPTP VPN"></a>3.安装一键PPTP VPN</h3><p>wget <a href="http://www.hi-vps.com/shell/vpn_centos6.sh" target="_blank" rel="external">http://www.hi-vps.com/shell/vpn_centos6.sh</a></p>
+<p>sh vpn_centos6.sh</p>
+<p>选择1自动安装VPN，安装完成后，会自动生成一个默认的VPN用户名和随机密码。<br><img src="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/install_window.png" alt="img"></p>
+<h3 id="4-添加任意VPN账号"><a href="#4-添加任意VPN账号" class="headerlink" title="4.添加任意VPN账号"></a>4.添加任意VPN账号</h3><p>sh vpn_centos6.sh</p>
+<p>选择3即可手动添加用户名和密码</p>
+<p><a href="http://ckj375.github.io/2016/07/28/%E6%90%AC%E7%93%A6%E5%B7%A5VPS%E6%90%AD%E5%BB%BAPPTP-VPN/" target="_blank" rel="external">阅读原文</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/20/如何在Android源码中为APK签系统签名？/" itemprop="url">
                   如何在Android源码中为APK签系统签名？
                 </a>
@@ -847,7 +953,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

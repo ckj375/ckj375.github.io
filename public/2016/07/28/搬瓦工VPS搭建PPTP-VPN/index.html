@@ -57,22 +57,26 @@
 
 
 
-<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
-
-找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
+<meta name="description" content="之前一直在用神器Lantern和Nydus(20元一个月)，感觉还不错，但是各有各的不足！于是开始自己动手折腾用VPS搭建VPN…上网逛了一圈，最后选择了搬瓦工的VPS：512RAM，10G SSD，1000G/月，19.9$/年，用了个优惠码，最后用支付宝付了19刀。
+下面具体介绍下如何创建PPTP VPN:
+1.进入搬瓦工控制面板界面点击stop按钮，选择左侧的Install new OS，推">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何在Android源码中为APK签系统签名？">
-<meta property="og:url" content="http://yoursite.com/2016/07/20/如何在Android源码中为APK签系统签名？/index.html">
+<meta property="og:title" content="搬瓦工VPS搭建PPTP VPN">
+<meta property="og:url" content="http://yoursite.com/2016/07/28/搬瓦工VPS搭建PPTP-VPN/index.html">
 <meta property="og:site_name" content="皮皮熊的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
-
-找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
-<meta property="og:updated_time" content="2016-07-20T09:08:47.000Z">
+<meta property="og:description" content="之前一直在用神器Lantern和Nydus(20元一个月)，感觉还不错，但是各有各的不足！于是开始自己动手折腾用VPS搭建VPN…上网逛了一圈，最后选择了搬瓦工的VPS：512RAM，10G SSD，1000G/月，19.9$/年，用了个优惠码，最后用支付宝付了19刀。
+下面具体介绍下如何创建PPTP VPN:
+1.进入搬瓦工控制面板界面点击stop按钮，选择左侧的Install new OS，推">
+<meta property="og:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/control_panel.png">
+<meta property="og:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/shell_window.png">
+<meta property="og:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/install_window.png">
+<meta property="og:updated_time" content="2016-07-28T07:06:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何在Android源码中为APK签系统签名？">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
-
-找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
+<meta name="twitter:title" content="搬瓦工VPS搭建PPTP VPN">
+<meta name="twitter:description" content="之前一直在用神器Lantern和Nydus(20元一个月)，感觉还不错，但是各有各的不足！于是开始自己动手折腾用VPS搭建VPN…上网逛了一圈，最后选择了搬瓦工的VPS：512RAM，10G SSD，1000G/月，19.9$/年，用了个优惠码，最后用支付宝付了19刀。
+下面具体介绍下如何创建PPTP VPN:
+1.进入搬瓦工控制面板界面点击stop按钮，选择左侧的Install new OS，推">
+<meta name="twitter:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/control_panel.png">
 
 
 
@@ -90,7 +94,7 @@
   };
 </script>
 
-  <title> 如何在Android源码中为APK签系统签名？ | 皮皮熊的博客 </title>
+  <title> 搬瓦工VPS搭建PPTP VPN | 皮皮熊的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +234,7 @@
             
             
               
-                如何在Android源码中为APK签系统签名？
+                搬瓦工VPS搭建PPTP VPN
               
             
           </h1>
@@ -242,8 +246,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T16:42:19+08:00" content="2016-07-20">
-              2016-07-20
+            <time itemprop="dateCreated" datetime="2016-07-28T14:51:32+08:00" content="2016-07-28">
+              2016-07-28
             </time>
           </span>
 
@@ -253,8 +257,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/20/如何在Android源码中为APK签系统签名？/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/如何在Android源码中为APK签系统签名？/" itemprop="commentsCount"></span>
+                <a href="/2016/07/28/搬瓦工VPS搭建PPTP-VPN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/搬瓦工VPS搭建PPTP-VPN/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -276,18 +280,17 @@
       
 
       
-        <p>&#160; &#160; &#160; &#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但<br>往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.</p>
-<ol>
-<li><p>找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platform.pk8两个文件</p>
-</li>
-<li><p>把签名文件复制到\out\host\linux-x86\framework目录下</p>
-</li>
-<li><p>把预签名的apk复制到\out\host\linux-x86\framework目录下</p>
-</li>
-<li><p>把编译路径切换到\out\host\linux-x86\framework目录下，使用java -jar signapk.jar platform.x509.pem platform.pk8 in.apk(预签名的apk) out.apk(签名之后的apk)</p>
-</li>
-</ol>
-<p><a href="http://ckj375.github.io/2016/07/20/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E6%BA%90%E7%A0%81%E4%B8%AD%E4%B8%BAAPK%E7%AD%BE%E7%B3%BB%E7%BB%9F%E7%AD%BE%E5%90%8D%EF%BC%9F/" target="_blank" rel="external">阅读原文</a></p>
+        <p>之前一直在用神器Lantern和Nydus(20元一个月)，感觉还不错，但是各有各的不足！<br>于是开始自己动手折腾用VPS搭建VPN…<br>上网逛了一圈，最后选择了搬瓦工的VPS：512RAM，10G SSD，1000G/月，19.9$/年，用了个优惠码，最后用支付宝付了19刀。</p>
+<p>下面具体介绍下如何创建PPTP VPN:</p>
+<h3 id="1-进入搬瓦工控制面板界面"><a href="#1-进入搬瓦工控制面板界面" class="headerlink" title="1.进入搬瓦工控制面板界面"></a>1.进入搬瓦工控制面板界面</h3><p>点击stop按钮，选择左侧的Install new OS，推荐装Centos 6 x86</p>
+<p><img src="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/control_panel.png" alt="img"></p>
+<h3 id="2-安装完毕后可以直接选择Root-shell-interactive启动命令窗口"><a href="#2-安装完毕后可以直接选择Root-shell-interactive启动命令窗口" class="headerlink" title="2.安装完毕后可以直接选择Root shell-interactive启动命令窗口"></a>2.安装完毕后可以直接选择Root shell-interactive启动命令窗口</h3><p><img src="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/shell_window.png" alt="img"></p>
+<h3 id="3-安装一键PPTP-VPN"><a href="#3-安装一键PPTP-VPN" class="headerlink" title="3.安装一键PPTP VPN"></a>3.安装一键PPTP VPN</h3><p>wget <a href="http://www.hi-vps.com/shell/vpn_centos6.sh" target="_blank" rel="external">http://www.hi-vps.com/shell/vpn_centos6.sh</a></p>
+<p>sh vpn_centos6.sh</p>
+<p>选择1自动安装VPN，安装完成后，会自动生成一个默认的VPN用户名和随机密码。<br><img src="http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/install_window.png" alt="img"></p>
+<h3 id="4-添加任意VPN账号"><a href="#4-添加任意VPN账号" class="headerlink" title="4.添加任意VPN账号"></a>4.添加任意VPN账号</h3><p>sh vpn_centos6.sh</p>
+<p>选择3即可手动添加用户名和密码</p>
+<p><a href="http://ckj375.github.io/2016/07/28/%E6%90%AC%E7%93%A6%E5%B7%A5VPS%E6%90%AD%E5%BB%BAPPTP-VPN/" target="_blank" rel="external">阅读原文</a></p>
 
       
     </div>
@@ -305,17 +308,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/19/Android-Studio：Gradle常用命令/" rel="next" title="Android Studio：Gradle常用命令">
-                <i class="fa fa-chevron-left"></i> Android Studio：Gradle常用命令
+              <a href="/2016/07/20/如何在Android源码中为APK签系统签名？/" rel="next" title="如何在Android源码中为APK签系统签名？">
+                <i class="fa fa-chevron-left"></i> 如何在Android源码中为APK签系统签名？
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/28/搬瓦工VPS搭建PPTP-VPN/" rel="prev" title="搬瓦工VPS搭建PPTP VPN">
-                搬瓦工VPS搭建PPTP VPN <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -341,8 +340,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/20/如何在Android源码中为APK签系统签名？/"
-           data-title="如何在Android源码中为APK签系统签名？" data-url="http://yoursite.com/2016/07/20/如何在Android源码中为APK签系统签名？/">
+      <div class="ds-thread" data-thread-key="2016/07/28/搬瓦工VPS搭建PPTP-VPN/"
+           data-title="搬瓦工VPS搭建PPTP VPN" data-url="http://yoursite.com/2016/07/28/搬瓦工VPS搭建PPTP-VPN/">
       </div>
     
   </div>
@@ -424,7 +423,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-进入搬瓦工控制面板界面"><span class="nav-number">1.</span> <span class="nav-text">1.进入搬瓦工控制面板界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装完毕后可以直接选择Root-shell-interactive启动命令窗口"><span class="nav-number">2.</span> <span class="nav-text">2.安装完毕后可以直接选择Root shell-interactive启动命令窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装一键PPTP-VPN"><span class="nav-number">3.</span> <span class="nav-text">3.安装一键PPTP VPN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-添加任意VPN账号"><span class="nav-number">4.</span> <span class="nav-text">4.添加任意VPN账号</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
