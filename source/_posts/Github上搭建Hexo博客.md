@@ -69,9 +69,10 @@ hexo d == hexo deploy
 主题配置
 ------
 个人比较喜欢简约风的主题，所以选了Next主题  
+首先去fork一套next主题源码:https://github.com/iissnan/hexo-theme-next  
 进入仓库根目录克隆最新版本的next主题：
 ```
-git clone https://github.com/iissnan/hexo-theme-next themes/next
+git clone https://github.com/ckj375/hexo-theme-next.git themes/next
 ```
 修改仓库根目录下的_config.yml配置项theme
 theme: next

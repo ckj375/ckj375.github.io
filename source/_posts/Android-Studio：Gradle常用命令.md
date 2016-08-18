@@ -4,7 +4,7 @@ date: 2016-07-19 15:33:51
 tags:
 ---
 
-Android Studio中自带Terminal，可以直接使用gradle命令，不必另开命令窗口，相当方便，下面总结一下常用的命令：
+Android Studio中自带Terminal，可以直接使用gradle命令，不用另开命令窗口，相当方便，下面总结一下常用的命令：
 * 1.查看Gradle版本号
 ```
 ./gradlew -v
