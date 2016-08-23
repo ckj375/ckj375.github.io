@@ -1,20 +1,22 @@
 ---
-title: Github Pages上搭建Hexo博客
+title: Github上搭建Hexo博客
 date: 2016-03-16 11:22:55
 tags:
 ---
 
-安装Git和NodeJs
+1. 安装Git和NodeJs
 ------
-安装hexo
+此处略过,不会的童鞋找谷哥...
+
+2. 安装hexo
 ------
-* 去github上创建仓库，name.github.io,示例：ckj375.github.io
-* 创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。
-* 克隆代码仓  
+去github上创建仓库，name.github.io,示例：ckj375.github.io
+创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。
+克隆代码仓  
 ```
 git clone https://github.com/ckj375/ckj375.github.io.git
 ```
-* 进入目录，依次执行以下命令
+进入目录，依次执行以下命令
 ```
 hexo init  
 npm install  
@@ -22,31 +24,30 @@ npm install hexo-deployer-git --save
 hexo generate  
 hexo server  
 ```
-* 打开本地浏览器按照提示输入url即可访问本地博客了,若提示找不到hexo server这条指令,输入
+打开本地浏览器按照提示输入url即可访问本地博客了,若提示找不到hexo server这条指令,输入
 ```
 npm install hexo -server --save
 ```
-* 修改_config.yml中的deploy参数（注意冒号后面要加空格）
+修改_config.yml中的deploy参数（注意冒号后面要加空格）
 ```
 deploy:  
     type: git  
     repo: https://github.com/ckj375/ckj375.github.io.git  
     branch: master
 ```
-* 网站作者和标题：修改站点配置文件_config.yml的author和title字段
+网站作者和标题：修改站点配置文件_config.yml的author和title字段
 ```
 author: chenkaijian
 title: 皮皮熊的博客
 ```
-* 通过Git将网站原始文件提交至hexo分支：
+通过Git将网站原始文件提交至hexo分支：
 ```
 git push origin hexo
 hexo generate 生成网站
 hexo deploy 将网站部署到github的master（前面已经在站点配置文件_config.yml中配置deploy参数）
 ```
-浏览器打开http://ckj375.github.io/即可查看效果了
 
-hexo常用命令
+3. hexo常用命令
 ------
 ```
 hexo help #查看帮助  
@@ -66,7 +67,7 @@ hexo s == hexo server
 hexo d == hexo deploy  
 ```
 
-主题配置
+4. 主题配置
 ------
 个人比较喜欢简约风的主题，所以选了Next主题  
 首先去fork一套next主题源码:https://github.com/iissnan/hexo-theme-next  
@@ -107,7 +108,7 @@ menu:
 放置在 source/images/ 目录下  
 配置为：avatar: /images/avatar.png
 
-集成第三方服务
+5. 集成第三方服务
 ------
 **多说评论**  
 首页选择我要安装，创建站点信息。多说域名这一栏即是你的多说域名，示例：
@@ -136,7 +137,7 @@ js部分可换成自己想要的样式,
 在主题配置文件中启用cnzz统计  
 cnzz_tongji: true
 
-编辑文章
+6. 编辑文章
 ------
 新建文章
 ```
@@ -153,4 +154,3 @@ tags:
 ```
 接下来就用markdown尽情书写吧！
 
-[阅读原文](http://ckj375.github.io/2016/03/16/Github%E4%B8%8A%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/)
