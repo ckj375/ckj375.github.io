@@ -1,7 +1,8 @@
 ---
 title: Android Studio：Gradle常用命令
 date: 2016-07-19 15:33:51
-tags:
+tags: Android Studio
+categories: Android Studio
 ---
 
 Android Studio中自带Terminal，可以直接使用gradle命令，不用另开命令窗口，相当方便，下面总结一下常用的命令：

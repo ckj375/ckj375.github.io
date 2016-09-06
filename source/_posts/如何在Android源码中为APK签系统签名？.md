@@ -1,7 +1,8 @@
 ---
 title: 如何在Android源码中为APK签系统签名？
 date: 2016-07-20 16:42:19
-tags:
+tags: Android签名
+categories: Android
 ---
 &#160; &#160; &#160; &#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但
 往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.

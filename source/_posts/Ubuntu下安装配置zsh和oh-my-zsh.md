@@ -1,7 +1,8 @@
 ---
 title: Ubuntu下安装配置zsh和oh my zsh
 date: 2016-07-15 17:09:36
-tags:
+tags: Zsh
+categories: Ubuntu
 ---
 
 zsh优势：自动补全功能强大和很高的可配置性

@@ -1,7 +1,8 @@
 ---
 title: 搬瓦工VPS搭建PPTP VPN
 date: 2016-07-28 14:51:32
-tags:
+tags: VPN
+categories: VPN
 ---
 
 

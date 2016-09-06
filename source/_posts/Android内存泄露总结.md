@@ -1,7 +1,8 @@
 ---
 title: Android内存泄露总结
 date: 2016-05-10 08:54:32
-tags:
+tags: 内存泄露
+categories: Android
 ---
 
 #### 前言

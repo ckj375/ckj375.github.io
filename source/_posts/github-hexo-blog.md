@@ -1,7 +1,8 @@
 ---
 title: Github上搭建Hexo博客
 date: 2016-03-16 11:22:55
-tags:
+tags: Hexo
+categories: Github
 ---
 
 1. 安装Git和NodeJs
