@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android内存泄露总结 | BB猪</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言　　不少人认为JAVA程序，因为有垃圾回收机制，应该没有内存泄露。其实如果我们一个程序中，已经不再使用某个对象，但是因为仍然有引用指向它，垃圾回收器就无法回收它，当然该对象占用的内存就无法被使用，这就造成了内存泄露。如果我们的java运行很久,而这种内存泄露不断的发生，最后就没内存可用了。当然java的，内存泄漏和C/C++是不一样的。如果java程序完全结束后，它所有的对象就都不可达了，系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android内存泄露总结">
+<meta property="og:url" content="http://yoursite.com/2016/05/10/Android内存泄露总结/index.html">
+<meta property="og:site_name" content="BB猪">
+<meta property="og:description" content="前言　　不少人认为JAVA程序，因为有垃圾回收机制，应该没有内存泄露。其实如果我们一个程序中，已经不再使用某个对象，但是因为仍然有引用指向它，垃圾回收器就无法回收它，当然该对象占用的内存就无法被使用，这就造成了内存泄露。如果我们的java运行很久,而这种内存泄露不断的发生，最后就没内存可用了。当然java的，内存泄漏和C/C++是不一样的。如果java程序完全结束后，它所有的对象就都不可达了，系统">
+<meta property="og:updated_time" content="2016-11-25T08:50:33.764Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android内存泄露总结">
+<meta name="twitter:description" content="前言　　不少人认为JAVA程序，因为有垃圾回收机制，应该没有内存泄露。其实如果我们一个程序中，已经不再使用某个对象，但是因为仍然有引用指向它，垃圾回收器就无法回收它，当然该对象占用的内存就无法被使用，这就造成了内存泄露。如果我们的java运行很久,而这种内存泄露不断的发生，最后就没内存可用了。当然java的，内存泄漏和C/C++是不一样的。如果java程序完全结束后，它所有的对象就都不可达了，系统">
+  
+    <link rel="alternate" href="/atom.xml" title="BB猪" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">BB猪</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android内存泄露总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/10/Android内存泄露总结/" class="article-date">
+  <time datetime="2016-05-10T00:54:32.000Z" itemprop="datePublished">2016-05-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android内存泄露总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>　　不少人认为JAVA程序，因为有垃圾回收机制，应该没有内存泄露。<br>其实如果我们一个程序中，已经不再使用某个对象，但是因为仍然有引用指向它，垃圾回收器就无法回收它，当然该对象占用的内存就无法被使用，这就造成了内存泄露。如果我们的java运行很久,而这种内存泄露不断的发生，最后就没内存可用了。当然java的，内存泄漏和C/C++是不一样的。如果java程序完全结束后，它所有的对象就都不可达了，系统就可以对他们进行垃圾回收，它的内存泄露仅仅限于它本身，而不会影响整个系统的。<br>　　Android的一个应用程序的内存泄露对别的应用程序影响不大。为了能够使得Android应用程序安全且快速的运行，Android的每个应用程序都会使用一个专有的Dalvik虚拟机实例来运行，它是由Zygote服务进程孵化出来的，也就是说每个应用程序都是在属于自己的进程中运行的。Android为不同类型的进程分配了不同的内存使用上限，如果程序在运行过程中出现了内存泄漏的而造成应用进程使用的内存超过了这个上限，则会被系统视为内存泄漏，从而被kill掉，这使得仅仅自己的进程被kill掉，而不会影响其他进程（如果是system_process等系统进程出问题的话，则会引起系统重启）。</p>
+<h2 id="一-内存泄漏常见原因"><a href="#一-内存泄漏常见原因" class="headerlink" title="一.内存泄漏常见原因"></a>一.内存泄漏常见原因</h2><ul>
+<li>1.查询数据库没有关闭游标</li>
+<li>2.构造 Adapter时，没有使用缓存的convertView</li>
+<li>3.Bitmap对象不在使用时调用recycle()释放内存</li>
+<li>4.释放对象的引用</li>
+</ul>
+<h2 id="二-内存泄漏检测方法"><a href="#二-内存泄漏检测方法" class="headerlink" title="二.内存泄漏检测方法"></a>二.内存泄漏检测方法</h2><p>检测工具：</p>
+<ul>
+<li>1.Android Studio</li>
+<li>2.adb命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell dumpsys meminfo 包名</div><div class="line">adb shell dumpsys meminfo -oom 查看当前手机所有进程的内存消耗情况</div><div class="line">adb shell top|grep 包名</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>测试方法：</p>
+<ul>
+<li>1.手动随机测试或指定路径压力测试    </li>
+<li>2.利用第三方工具进行制定路径压力测试：按键精灵  </li>
+<li>3.monkey测试：adb shell monkey -p com.fineos.camera -v 500  （发送500条伪随机事件）</li>
+</ul>
+<p>以Android Studio为例：<br>1.打开应用，不做任何操作时的内存占用<br>2.操作一段时间后，内存占用不断上升<br>3.停止操作，静置一段时间，内存仍未被释放<br>4.手动调用一次GC后，点击dump java heap按钮<br>5.dump成功后会自动打开hprof文件,这个文件会保存在项目根目录下的captures文件夹中，由于Android studio自带的界面查找内存泄漏不是很智能，所以建议使用第三方工具MAT，由于MAT不识别此文件，需右键Export to standard .hprof，然后用MAT打开导出的hprof(File-&gt;Open heap dump)</p>
+<h2 id="三-内存分析工具-MAT"><a href="#三-内存分析工具-MAT" class="headerlink" title="三.内存分析工具 MAT"></a>三.内存分析工具 MAT</h2><p>　　如果使用检测工具确实发现了我们的程序中存在内存泄漏，那又如何定位到具体出现问题的代码片段，最终找到问题所在呢？如果从头到尾的分析代码逻辑，那肯定会把人逼疯，特别是在维护别人写的代码的时候。这里介绍一个极好的内存分析工具 – Memory Analyzer Tool(MAT) 。<br>　　MAT 是一个 Eclipse 插件，同时也有单独的RCP 客户端。官方下载地址、 MAT 介绍和详细的使用教程请参见：www.eclipse.org/mat，在此不进行说明了。另外在 MAT 安装后的帮助文档里也有完备的使用教程。在此仅举例说明其使用方法。我自己使用的是 MAT 的 eclipse 插件，使用插件要比RCP 稍微方便一些。  </p>
+<p>使用MAT 进行内存分析需要几个步骤，包括：生成 .hprof 文件、打开MAT 并导入.hprof文件、使用 MAT 的视图工具分析内存。<br>(a) 生成.hprof文件<br>(b) 使用 MAT导入.hprof文件  </p>
+<ul>
+<li>1 如果是 eclipse 自动生成的.hprof 文件，可以使用 MAT 插件直接打开（可能是比较新的 ADT才支持）；</li>
+<li>2 如果eclipse 自动生成的 .hprof 文件不能被MAT 直接打开， 或者是使用 android.os.Debug.dumpHprofData()方法手动生成的.hprof 文件，则需要将 .hprof 文件进行转换，转换的方法：<br>例如我将 .hprof 文件拷贝到PC 上的/ANDROID_SDK/tools 目录下，并输入命令 hprofconv xxx.hprof yyy.hprof，其中xxx.hprof 为原始文件， yyy.hprof 为转换过后的文件。转换过后的文件自动放在 /ANDROID_SDK/tools 目录下。OK ，到此为止， .hprof 文件处理完毕，可以用来分析内存泄露情况了。</li>
+<li>3 在Eclipse 中点击Windows-&gt;Open Perspective-&gt;Other-&gt;Memory Analyzer，或者打Memory Analyzer Tool 的RCP。在 MAT 中点击 File-&gt;Open File，浏览并导入刚刚转换而得到的 .hprof文件。  </li>
+</ul>
+<p>(c) 使用 MAT的视图工具分析内存<br>导入.hprof 文件以后， MAT 会自动解析并生成报告，点击 Dominator Tree，并按Package 分组，选择自己所定义的 Package 类点右键，在弹出菜单中选择 List objects-&gt;With incoming<br>references。这时会列出所有可疑类，右键点击某一项，并选择 Path to GC Roots -&gt; exclude weak/soft references，会进一步筛选出跟程序相关的所有有内存泄露的类。据此，可以追踪到代码中的某一个产生泄露的类。  </p>
+<p>具体的分析方法在此不做说明了，因为在 MAT 的官方网站和客户端的帮助文档中有十分详尽的介绍。<br>了解MAT 中各个视图的作用很重要，例如 www.eclipse.org/mat/about/screenshots.php 中介绍的。<br>总之使用 MAT 分析内存查找内存泄漏的根本思路，就是找到哪个类的对象的引用没有被释放，找到没有被释放的原因，也就可以很容易定位代码中的哪些片段的逻辑有问题了。</p>
+<h2 id="四-第三方开源库LeakCanary"><a href="#四-第三方开源库LeakCanary" class="headerlink" title="四.第三方开源库LeakCanary"></a>四.第三方开源库LeakCanary</h2><p>LeakCanary是一个开源的检测内存泄露的java库。<br>如何集成LeakCanary?<br>In your build.gradle:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">  debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.4-beta2&apos;</div><div class="line">  releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2&apos;</div><div class="line">  testCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>In your Application class:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class ExampleApplication extends Application &#123;</div><div class="line"></div><div class="line">  @Override public void onCreate() &#123;</div><div class="line">  super.onCreate();</div><div class="line">  LeakCanary.install(this);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>加入上述代码后，在你的debug版本中如果Activity有内存泄漏，通知栏会自动弹出内存泄漏通知。</p>
+<p>更详细的使用教程可以去Github搜LeakCanary：<a href="https://github.com/square/leakcanary/wiki/FAQ" target="_blank" rel="external">https://github.com/square/leakcanary/wiki/FAQ</a></p>
+<h2 id="五-内存泄漏总结"><a href="#五-内存泄漏总结" class="headerlink" title="五.内存泄漏总结"></a>五.内存泄漏总结</h2><p>通过对比MAT和LeakCanary发现，LeakCanary可以很方便的检测出内存泄露的路径，尤其是Context的泄漏，但是对于某些自定义的类或对象，需手动监听，项目初期集成LeakCanary会避免很多内存泄露的情形；<br>而MAT则主要列出可疑的类及对象，不能精确定位，需对项目代码熟悉才行。</p>
+<p><a href="http://ckj375.github.io/2016/05/10/Android%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E6%80%BB%E7%BB%93/" target="_blank" rel="external">阅读原文</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/10/Android内存泄露总结/" data-id="ciw1hdo1f0001dmh7z6l6sa0q" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存泄露/">内存泄露</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu下安装配置zsh和oh my zsh
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/16/github-hexo-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">Github上搭建Hexo博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android-Studio/">Android Studio</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPN/">VPN</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android签名/">Android签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zsh/">Zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存泄露/">内存泄露</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贴图/">贴图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Android签名/" style="font-size: 10px;">Android签名</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/Zsh/" style="font-size: 10px;">Zsh</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/贴图/" style="font-size: 10px;">贴图</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/08/android-sticker/">Android贴图功能详解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/28/搬瓦工VPS搭建PPTP-VPN/">搬瓦工VPS搭建PPTP VPN</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/20/如何在Android源码中为APK签系统签名？/">如何在Android源码中为APK签系统签名？</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/Android-Studio：Gradle常用命令/">Android Studio：Gradle常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/">Ubuntu下安装配置zsh和oh my zsh</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 BB猪<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
