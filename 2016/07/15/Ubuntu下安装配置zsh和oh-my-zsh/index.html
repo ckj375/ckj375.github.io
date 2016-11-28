@@ -1,51 +1,260 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ubuntu下安装配置zsh和oh my zsh | BB猪</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="zsh优势：自动补全功能强大和很高的可配置性
+查看当前系统装了哪些shellcat /etc/shells
+当前正在运行的是哪个版本的shellecho $SHELL
+安装zshsudo apt-get zsh
+切换zshchsh -s /bin/bash(非实时，需重启)
+安装oh my zshwget –no-check-certificate https://github.com/robby">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu下安装配置zsh和oh my zsh">
+<meta property="og:url" content="http://yoursite.com/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/index.html">
+<meta property="og:site_name" content="BB猪">
+<meta property="og:description" content="zsh优势：自动补全功能强大和很高的可配置性
+查看当前系统装了哪些shellcat /etc/shells
+当前正在运行的是哪个版本的shellecho $SHELL
+安装zshsudo apt-get zsh
+切换zshchsh -s /bin/bash(非实时，需重启)
+安装oh my zshwget –no-check-certificate https://github.com/robby">
+<meta property="og:updated_time" content="2016-11-25T08:50:33.764Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu下安装配置zsh和oh my zsh">
+<meta name="twitter:description" content="zsh优势：自动补全功能强大和很高的可配置性
+查看当前系统装了哪些shellcat /etc/shells
+当前正在运行的是哪个版本的shellecho $SHELL
+安装zshsudo apt-get zsh
+切换zshchsh -s /bin/bash(非实时，需重启)
+安装oh my zshwget –no-check-certificate https://github.com/robby">
+  
+    <link rel="alternate" href="/atom.xml" title="BB猪" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-block title
-  title= page.title + ' | ' + config.title
+</head>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format('ll')
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-    if theme.duoshuo
-      a.ds-thread-count(data-thread-key=page.path, href=url_for(page.path) + '#comments')
-    if theme.disqus
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content)
-    .post-content
-      != page.content
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url='#{page.permalink}', data-id='#{page._id}')= __('shareto')
-    include _partial/tag
-    include _partial/post_nav
-    if theme.duoshuo
-      div(class='ds-share flat' data-thread-key=page.path, data-title=page.title, data-url=page.permalink)
-         .ds-share-inline
-            ul.ds-share-icons-16
-              li(data-toggle='ds-share-icons-more')
-                a(class='ds-more' href='javascript:void(0);') 分享到：
-              li
-                a(class='ds-weibo' href='javascript:void(0);' data-service='weibo') 微博
-              li
-                a(class='ds-qzone' href='javascript:void(0);' data-service='qzone') QQ空间
-              li
-                a(class='ds-qqt' href='javascript:void(0);' data-service='qqt') 腾讯微博
-              li
-                a(class='ds-wechat' href='javascript:void(0);' data-service='wechat') 微信
-            .ds-share-icons-more
-    include _partial/comments
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">BB猪</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ubuntu下安装配置zsh和oh-my-zsh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/" class="article-date">
+  <time datetime="2016-07-15T09:09:36.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Ubuntu/">Ubuntu</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu下安装配置zsh和oh my zsh
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="zsh优势：自动补全功能强大和很高的可配置性"><a href="#zsh优势：自动补全功能强大和很高的可配置性" class="headerlink" title="zsh优势：自动补全功能强大和很高的可配置性"></a>zsh优势：自动补全功能强大和很高的可配置性</h2><ol>
+<li>查看当前系统装了哪些shell<br>cat /etc/shells</li>
+<li>当前正在运行的是哪个版本的shell<br>echo $SHELL</li>
+<li>安装zsh<br>sudo apt-get zsh</li>
+<li>切换zsh<br>chsh -s /bin/bash(非实时，需重启)</li>
+<li>安装oh my zsh<br>wget –no-check-certificate <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</li>
+<li><p>设置zsh的参数<br>安装完zsh后，在home目录下会有一个名为.zshrc的隐藏文件，可以根据个人习惯配置zsh的参数<br>oh my zsh 在安装时已经自动读取当前的环境变量并进行了设置，你可以继续追加其他环境变量</p>
+<p>oh my zsh各式各样的主题预览：<a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/wiki/themes</a></p>
+<p><a href="http://ckj375.github.io/2016/07/15/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh-my-zsh/" target="_blank" rel="external">阅读原文</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/" data-id="ciw1n5nfq0005lvh7tl710zii" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zsh/">Zsh</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/19/Android-Studio：Gradle常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android Studio：Gradle常用命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/10/Android内存泄露总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android内存泄露总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android-Studio/">Android Studio</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPN/">VPN</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android签名/">Android签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zsh/">Zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存泄露/">内存泄露</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贴图/">贴图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Android签名/" style="font-size: 10px;">Android签名</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/Zsh/" style="font-size: 10px;">Zsh</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/贴图/" style="font-size: 10px;">贴图</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/08/android-sticker/">Android贴图功能详解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/28/搬瓦工VPS搭建PPTP-VPN/">搬瓦工VPS搭建PPTP VPN</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/20/如何在Android源码中为APK签系统签名？/">如何在Android源码中为APK签系统签名？</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/Android-Studio：Gradle常用命令/">Android Studio：Gradle常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/">Ubuntu下安装配置zsh和oh my zsh</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 BB猪<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
