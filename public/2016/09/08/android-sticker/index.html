@@ -84,24 +84,21 @@
 
 
 
-<meta name="description" content="前言随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。
-需求应用自带一部分默认素材，根据类别进入素材浏览界面，选中某一具体素材后，跳转至编辑界面，在编辑界面可对素材进行旋转，缩放，移动，删除操作，支持添加多个素材，最终保存。">
+<meta name="description" content="前言随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android贴图功能详解">
 <meta property="og:url" content="http://yoursite.com/2016/09/08/android-sticker/index.html">
 <meta property="og:site_name" content="ckj375">
-<meta property="og:description" content="前言随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。
-需求应用自带一部分默认素材，根据类别进入素材浏览界面，选中某一具体素材后，跳转至编辑界面，在编辑界面可对素材进行旋转，缩放，移动，删除操作，支持添加多个素材，最终保存。">
+<meta property="og:description" content="前言随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。">
 <meta property="og:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/meitutietie.jpg">
 <meta property="og:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview-model1.jpg">
 <meta property="og:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview-model2.jpg">
 <meta property="og:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview-demo1.jpg">
 <meta property="og:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview.gif">
-<meta property="og:updated_time" content="2016-11-25T08:50:33.764Z">
+<meta property="og:updated_time" content="2017-02-06T06:49:34.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android贴图功能详解">
-<meta name="twitter:description" content="前言随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。
-需求应用自带一部分默认素材，根据类别进入素材浏览界面，选中某一具体素材后，跳转至编辑界面，在编辑界面可对素材进行旋转，缩放，移动，删除操作，支持添加多个素材，最终保存。">
+<meta name="twitter:description" content="前言随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。">
 <meta name="twitter:image" content="http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/meitutietie.jpg">
 
 
@@ -189,7 +186,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/index.html" rel="section">
+          <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -199,7 +196,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/index.html" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -209,7 +206,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/index.html" rel="section">
+          <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -326,7 +323,7 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。<br><a id="more"></a></p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>应用自带一部分默认素材，根据类别进入素材浏览界面，选中某一具体素材后，跳转至编辑界面，在编辑界面可对素材进行旋转，缩放，移动，删除操作，支持添加多个素材，最终保存。美图贴贴界面如下:</p>
 <div align="center"><br><img src="http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/meitutietie.jpg" alt="img"><br></div>
 
@@ -635,8 +632,6 @@ return newb;
 </code></pre><p>项目地址:<a href="https://github.com/ckj375/Android-Sticker.git" target="_blank" rel="external">https://github.com/ckj375/Android-Sticker.git</a><br>效果图:</p>
 <div align="center"><br>            <img src="http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview.gif" alt="img"><br></div>
 
-<p><a href="http://ckj375.github.io/2016/09/08/android-sticker/" target="_blank" rel="external">(转载请注明出处,谢谢)</a></p>
-
       
     </div>
 
@@ -650,6 +645,27 @@ return newb;
     <div>
       
         
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="ckj375 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="ckj375 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
     </div>
@@ -691,6 +707,25 @@ return newb;
 
 
     <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/09/08/android-sticker/"
+     data-title="Android贴图功能详解"
+     data-content=""
+     data-url="http://yoursite.com/2016/09/08/android-sticker/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
   </div>
@@ -748,7 +783,7 @@ return newb;
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives/index.html">
+            <a href="/archives">
               <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
@@ -756,7 +791,7 @@ return newb;
 
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
+              <a href="/categories">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -813,7 +848,7 @@ return newb;
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2016 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

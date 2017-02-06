@@ -13,6 +13,7 @@ categories: Github
 ------
 去github上创建仓库，name.github.io,示例：ckj375.github.io
 创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。
+<!-- more -->
 克隆代码仓  
 ```
 git clone https://github.com/ckj375/ckj375.github.io.git
@@ -154,4 +155,3 @@ tags:
 ---
 ```
 接下来就用markdown尽情书写吧！
-

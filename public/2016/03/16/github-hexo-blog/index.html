@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="1. 安装Git和NodeJs此处略过,不会的童鞋找谷哥…
-2. 安装hexo去github上创建仓库，name.github.io,示例：ckj375.github.io创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。克隆代码仓1git clone https://github.com/ckj375/ckj">
+2. 安装hexo去github上创建仓库，name.github.io,示例：ckj375.github.io创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Github上搭建Hexo博客">
 <meta property="og:url" content="http://yoursite.com/2016/03/16/github-hexo-blog/index.html">
 <meta property="og:site_name" content="ckj375">
 <meta property="og:description" content="1. 安装Git和NodeJs此处略过,不会的童鞋找谷哥…
-2. 安装hexo去github上创建仓库，name.github.io,示例：ckj375.github.io创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。克隆代码仓1git clone https://github.com/ckj375/ckj">
-<meta property="og:updated_time" content="2016-11-25T08:50:33.764Z">
+2. 安装hexo去github上创建仓库，name.github.io,示例：ckj375.github.io创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。">
+<meta property="og:updated_time" content="2017-02-06T06:52:05.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github上搭建Hexo博客">
 <meta name="twitter:description" content="1. 安装Git和NodeJs此处略过,不会的童鞋找谷哥…
-2. 安装hexo去github上创建仓库，name.github.io,示例：ckj375.github.io创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。克隆代码仓1git clone https://github.com/ckj375/ckj">
+2. 安装hexo去github上创建仓库，name.github.io,示例：ckj375.github.io创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。">
 
 
 
@@ -183,7 +183,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/index.html" rel="section">
+          <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -193,7 +193,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/index.html" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -203,7 +203,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/index.html" rel="section">
+          <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -321,7 +321,7 @@
 
       
         <h2 id="1-安装Git和NodeJs"><a href="#1-安装Git和NodeJs" class="headerlink" title="1. 安装Git和NodeJs"></a>1. 安装Git和NodeJs</h2><p>此处略过,不会的童鞋找谷哥…</p>
-<h2 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h2><p>去github上创建仓库，name.github.io,示例：ckj375.github.io<br>创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。<br>克隆代码仓<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/ckj375/ckj375.github.io.git</div></pre></td></tr></table></figure></p>
+<h2 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h2><p>去github上创建仓库，name.github.io,示例：ckj375.github.io<br>创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。<br><a id="more"></a><br>克隆代码仓<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/ckj375/ckj375.github.io.git</div></pre></td></tr></table></figure></p>
 <p>进入目录，依次执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo init  </div><div class="line">npm install  </div><div class="line">npm install hexo-deployer-git --save  </div><div class="line">hexo generate  </div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
 <p>打开本地浏览器按照提示输入url即可访问本地博客了,若提示找不到hexo server这条指令,输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo -server --save</div></pre></td></tr></table></figure></p>
 <p>修改_config.yml中的deploy参数（注意冒号后面要加空格）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:  </div><div class="line">    type: git  </div><div class="line">    repo: https://github.com/ckj375/ckj375.github.io.git  </div><div class="line">    branch: master</div></pre></td></tr></table></figure></p>
@@ -363,6 +363,27 @@
     <div>
       
         
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="ckj375 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="ckj375 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
     </div>
@@ -400,6 +421,25 @@
 
 
     <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/16/github-hexo-blog/"
+     data-title="Github上搭建Hexo博客"
+     data-content=""
+     data-url="http://yoursite.com/2016/03/16/github-hexo-blog/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
   </div>
@@ -457,7 +497,7 @@
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives/index.html">
+            <a href="/archives">
               <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
@@ -465,7 +505,7 @@
 
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
+              <a href="/categories">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -522,7 +562,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2016 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

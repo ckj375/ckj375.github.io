@@ -85,30 +85,18 @@
 
 
 <meta name="description" content="zsh优势：自动补全功能强大和很高的可配置性
-查看当前系统装了哪些shellcat /etc/shells
-当前正在运行的是哪个版本的shellecho $SHELL
-安装zshsudo apt-get zsh
-切换zshchsh -s /bin/bash(非实时，需重启)
-安装oh my zshwget –no-check-certificate https://github.com/robby">
+查看当前系统装了哪些shellcat /etc/shells">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu下安装配置zsh和oh my zsh">
 <meta property="og:url" content="http://yoursite.com/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/index.html">
 <meta property="og:site_name" content="ckj375">
 <meta property="og:description" content="zsh优势：自动补全功能强大和很高的可配置性
-查看当前系统装了哪些shellcat /etc/shells
-当前正在运行的是哪个版本的shellecho $SHELL
-安装zshsudo apt-get zsh
-切换zshchsh -s /bin/bash(非实时，需重启)
-安装oh my zshwget –no-check-certificate https://github.com/robby">
-<meta property="og:updated_time" content="2016-11-25T08:50:33.764Z">
+查看当前系统装了哪些shellcat /etc/shells">
+<meta property="og:updated_time" content="2017-02-06T06:50:14.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下安装配置zsh和oh my zsh">
 <meta name="twitter:description" content="zsh优势：自动补全功能强大和很高的可配置性
-查看当前系统装了哪些shellcat /etc/shells
-当前正在运行的是哪个版本的shellecho $SHELL
-安装zshsudo apt-get zsh
-切换zshchsh -s /bin/bash(非实时，需重启)
-安装oh my zshwget –no-check-certificate https://github.com/robby">
+查看当前系统装了哪些shellcat /etc/shells">
 
 
 
@@ -195,7 +183,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/index.html" rel="section">
+          <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -205,7 +193,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/index.html" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -215,7 +203,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/index.html" rel="section">
+          <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -333,14 +321,13 @@
 
       
         <h2 id="zsh优势：自动补全功能强大和很高的可配置性"><a href="#zsh优势：自动补全功能强大和很高的可配置性" class="headerlink" title="zsh优势：自动补全功能强大和很高的可配置性"></a>zsh优势：自动补全功能强大和很高的可配置性</h2><ol>
-<li>查看当前系统装了哪些shell<br>cat /etc/shells</li>
+<li>查看当前系统装了哪些shell<br>cat /etc/shells<a id="more"></a></li>
 <li>当前正在运行的是哪个版本的shell<br>echo $SHELL</li>
 <li>安装zsh<br>sudo apt-get zsh</li>
 <li>切换zsh<br>chsh -s /bin/bash(非实时，需重启)</li>
 <li>安装oh my zsh<br>wget –no-check-certificate <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</li>
 <li><p>设置zsh的参数<br>安装完zsh后，在home目录下会有一个名为.zshrc的隐藏文件，可以根据个人习惯配置zsh的参数<br>oh my zsh 在安装时已经自动读取当前的环境变量并进行了设置，你可以继续追加其他环境变量</p>
 <p>oh my zsh各式各样的主题预览：<a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/wiki/themes</a></p>
-<p><a href="http://ckj375.github.io/2016/07/15/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh-my-zsh/" target="_blank" rel="external">阅读原文</a></p>
 </li>
 </ol>
 
@@ -357,6 +344,27 @@
     <div>
       
         
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="ckj375 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="ckj375 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
     </div>
@@ -398,6 +406,25 @@
 
 
     <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/"
+     data-title="Ubuntu下安装配置zsh和oh my zsh"
+     data-content=""
+     data-url="http://yoursite.com/2016/07/15/Ubuntu下安装配置zsh和oh-my-zsh/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
   </div>
@@ -455,7 +482,7 @@
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives/index.html">
+            <a href="/archives">
               <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
@@ -463,7 +490,7 @@
 
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
+              <a href="/categories">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -520,7 +547,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2016 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

@@ -8,7 +8,7 @@ categories: Ubuntu
 zsh优势：自动补全功能强大和很高的可配置性
 ------
 1. 查看当前系统装了哪些shell
-   cat /etc/shells
+   cat /etc/shells<!-- more -->
 2. 当前正在运行的是哪个版本的shell
    echo $SHELL
 3. 安装zsh
@@ -22,5 +22,3 @@ zsh优势：自动补全功能强大和很高的可配置性
    oh my zsh 在安装时已经自动读取当前的环境变量并进行了设置，你可以继续追加其他环境变量
 
    oh my zsh各式各样的主题预览：https://github.com/robbyrussell/oh-my-zsh/wiki/themes
-
-   [阅读原文](http://ckj375.github.io/2016/07/15/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh-my-zsh/)

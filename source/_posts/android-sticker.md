@@ -7,6 +7,7 @@ categories: Android
 
 ### 前言
 随着美图贴贴，天天P图，in的火热，越来越多的人喜欢贴图，朋友圈里的好友尤其是妹子喜欢把照片贴上各种搞怪或呆萌的道具。去年公司说要做一款主打原创素材的贴图应用，BB猪满怀欣喜的接下了这个任务，现在把贴图功能的具体实现分享出来。
+<!-- more -->
 ### 需求
 应用自带一部分默认素材，根据类别进入素材浏览界面，选中某一具体素材后，跳转至编辑界面，在编辑界面可对素材进行旋转，缩放，移动，删除操作，支持添加多个素材，最终保存。美图贴贴界面如下:
 <div align=center>
@@ -365,5 +366,3 @@ initData方法主要是初始化Bitmap和坐标数组:
 <div align=center>
             ![img](http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview.gif)
 </div>
-
-[(转载请注明出处,谢谢)](http://ckj375.github.io/2016/09/08/android-sticker/)
