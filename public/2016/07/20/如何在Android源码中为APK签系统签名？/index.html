@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
-
-找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
+<meta name="description" content="做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在Android源码中为APK签系统签名？">
 <meta property="og:url" content="http://yoursite.com/2016/07/20/如何在Android源码中为APK签系统签名？/index.html">
 <meta property="og:site_name" content="ckj375">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
-
-找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
-<meta property="og:updated_time" content="2017-02-06T06:49:56.132Z">
+<meta property="og:description" content="做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.">
+<meta property="og:updated_time" content="2017-02-07T09:07:23.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在Android源码中为APK签系统签名？">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.
-
-找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platfo">
+<meta name="twitter:description" content="做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.">
 
 
 
@@ -323,9 +317,10 @@
       
 
       
-        <p>&#160; &#160; &#160; &#160; 做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但<br>往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.</p>
+        <p>做Android系统项目时经常会用基线代码编译出来的APK push到定制版本的手机里去验证,但往往会碰到签名不一致导致APK在桌面不显示的问题,这时候就需要用对应源码对APK重新签名打包.<br><a id="more"></a></p>
 <ol>
-<li>找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platform.pk8两个文件<a id="more"></a></li>
+<li><p>找到系统签名文件,文件路径：在源码的\build\target\product\security目录下有platform.x509pem和platform.pk8两个文件</p>
+</li>
 <li><p>把签名文件复制到\out\host\linux-x86\framework目录下</p>
 </li>
 <li><p>把预签名的apk复制到\out\host\linux-x86\framework目录下</p>
