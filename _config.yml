@@ -10,9 +10,15 @@ author: ckj375
 language: zh-Hans
 timezone:
 
+# 自动生成sitemap
+sitemap:
+    path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xml
+
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://chenkaijian.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
