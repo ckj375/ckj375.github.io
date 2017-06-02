@@ -80,7 +80,7 @@ deploy:
 
 #多说评论和分享
 duoshuo_shortname: ckj375
-duoshuo_share: true
+duoshuo_share: false
 
 # 设置页面文章的篇数
 index_generator:
