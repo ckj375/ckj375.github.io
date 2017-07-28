@@ -79,8 +79,11 @@ deploy:
   branch: master
 
 #多说评论和分享
-duoshuo_shortname: ckj375
-duoshuo_share: false
+#duoshuo_shortname: ckj375
+#duoshuo_share: false
+
+#Disqus
+disqus_shortname: ckj375
 
 # 设置页面文章的篇数
 index_generator:
