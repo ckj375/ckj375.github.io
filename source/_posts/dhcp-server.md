@@ -1,5 +1,5 @@
 ---
-title: Android电视盒子联调技能：使用DHCP Server
+title: Android电视盒子联调技能(一)：使用DHCP Server
 date: 2017-04-20 11:34:28
 tags: dhcp
 categories: 技术
@@ -26,5 +26,5 @@ categories: 技术
 点击Continue as try app按钮后，DHCP服务启动。  
 ![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic06.png)  
 
-将Android盒子关机并用网线连接笔记本，随后将Android盒子开机，即可获取到ip，可登陆 http://127.0.0.1/dhcpstatus.xml 查看局域网ip，随后打开命令终端，输入adb connect ip_xxx即可连接Android盒子，此时再插上东方有线的同轴线即可进行内网调试。  
+将Android盒子关机并用网线连接笔记本，随后将Android盒子开机，即可获取到ip，可登陆 http://127.0.0.1/dhcpstatus.xml 查看局域网ip，随后打开命令终端，输入adb connect ip（注：Windows 10下需指定端口号：adb connect ip:port）即可连接Android盒子，此时再插上东方有线的同轴线即可进行内网调试。 
 ![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic07.png)
