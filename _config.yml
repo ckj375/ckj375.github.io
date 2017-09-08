@@ -83,7 +83,7 @@ deploy:
 #duoshuo_share: false
 
 #Disqus
-disqus_shortname: ckj375
+#disqus_shortname: ckj375
 
 # 设置页面文章的篇数
 index_generator:
