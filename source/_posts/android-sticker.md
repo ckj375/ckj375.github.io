@@ -10,17 +10,17 @@ categories: Android
 <!-- more -->
 ### 需求
 应用自带一部分默认素材，根据类别进入素材浏览界面，选中某一具体素材后，跳转至编辑界面，在编辑界面可对素材进行旋转，缩放，移动，删除操作，支持添加多个素材，最终保存。美图贴贴界面如下:
-<div align=center>
+<center>
 ![img](http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/meitutietie.jpg)
-</div>
+</center>
 
 ### 分析
 BB猪冥思一想，有了初步方案：使用自定义View去实现道具的旋转，缩放，移动等基本操作。
 自定义一个贴图控件StickerView，继承至View。StickerView模型图如下:
 
-<div align=center>
+<center>
 ![img](http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview-model1.jpg)
-</div>
+</center>
 
 先定义4个常量分别表示:左上角删除按钮,右下角旋转缩放按钮,中心点,其他点。
 
@@ -35,9 +35,9 @@ BB猪冥思一想，有了初步方案：使用自定义View去实现道具的�
     private Bitmap mainBmp , deleteBmp ,controlBmp ;
     private int mainBmpWidth , mainBmpHeight , deleteBmpWidth , deleteBmpHeight , controlBmpWidth , controlBmpHeight ;    
 
-<div align=center>
+<center>
     ![img](http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview-model2.jpg)
-</div>
+</center>
 
 定义两个数组srcPs和dstPs,分别用于记录矩形转换(旋转,移动,缩放)前后的各点坐标。  
 
@@ -129,9 +129,9 @@ initData方法主要是初始化Bitmap和坐标数组:
     }  
 
 
-<div align=center>
+<center>
         ![img](http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview-demo1.jpg)
-</div>
+</center>
 
 接下来就是重点了,StickerView的Touch事件处理:  
 若触摸点不在StickerView上并且不在删除按钮和旋转按钮上，则将StickerView设置为非选中状态并隐藏边框和操作按钮；  
@@ -363,6 +363,6 @@ initData方法主要是初始化Bitmap和坐标数组:
 
 项目地址:https://github.com/ckj375/Android-Sticker.git   
 效果图:
-<div align=center>
+<center>
             ![img](http://o6xqhzzif.bkt.clouddn.com/hexo/android-sticker/stickerview.gif)
-</div>
+</center>
