@@ -1,5 +1,5 @@
 ---
-title: Android源码解析(一):bringToFront
+title: Android源码解析(一)：bringToFront
 date: 2017-10-24 16:34:14
 tags: bringToFront
 categories: Android
