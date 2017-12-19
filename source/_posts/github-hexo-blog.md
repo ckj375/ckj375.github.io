@@ -5,12 +5,10 @@ tags: Hexo
 categories: Github
 ---
 
-1. 安装Git和NodeJs
-------
+### 安装Git和NodeJs
 此处略过,不会的童鞋找谷哥...
 
-2. 安装hexo
-------
+### 安装hexo  
 去github上创建仓库，name.github.io,示例：ckj375.github.io
 创建2个分支：master和hexo，并设置hexo为默认分支，hexo分支用于存放网站原始文件，master分支用于存放生成的静态网页。
 <!-- more -->
@@ -49,8 +47,7 @@ hexo generate 生成网站
 hexo deploy 将网站部署到github的master（前面已经在站点配置文件_config.yml中配置deploy参数）
 ```
 
-3. hexo常用命令
-------
+### hexo常用命令
 ```
 hexo help #查看帮助  
 hexo init #初始化一个目录  
@@ -69,8 +66,7 @@ hexo s == hexo server
 hexo d == hexo deploy  
 ```
 
-4. 主题配置
-------
+### 主题配置
 个人比较喜欢简约风的主题，所以选了Next主题  
 首先去fork一套next主题源码:https://github.com/iissnan/hexo-theme-next  
 进入仓库根目录克隆最新版本的next主题：
@@ -110,8 +106,7 @@ menu:
 放置在 source/images/ 目录下  
 配置为：avatar: /images/avatar.png
 
-5. 集成第三方服务
-------
+### 集成第三方服务
 **多说评论**  
 首页选择我要安装，创建站点信息。多说域名这一栏即是你的多说域名，示例：
 ```
@@ -139,8 +134,7 @@ js部分可换成自己想要的样式,
 在主题配置文件中启用cnzz统计  
 cnzz_tongji: true
 
-6. 编辑文章
-------
+### 编辑文章
 新建文章
 ```
 hexo new "标题"
@@ -155,3 +149,13 @@ tags:
 ---
 ```
 接下来就用markdown尽情书写吧！
+
+### 博客迁移
+如果需要在其他电脑上使用Github上备份的hexo博客如何处理？  
+1.安装Git和NodeJs,输入 npm install hexo-cli -g 安装hexo,输入 hexo -v 检查hexo安装是否成功    
+2.克隆博客源码  
+git  clone https://github.com/ckj375/ckj375.github.io.git  
+3.进入博客源码themes目录，克隆next主题  
+git  clone https://github.com/ckj375/hexo-theme-next.git  
+4.在hexo博客源码根目录下输入 npm install hexo --save 初始化hexo配置文件，接着输入 npm install 配置node  
+5.最后使用 hexo g ,hexo s（如果找不到此命令，输入 npm install hexo -server --save 安装server）编辑及预览博客
