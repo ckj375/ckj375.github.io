@@ -105,7 +105,7 @@ private static Retrofit getRetrofit() {
     return mRetrofit;
 }
 ```
-3.更改接口定义，返回值不再是Call ,而是Observble
+3.更改接口定义，返回值不再是Call ,而是Observable
 ```
 public interface HttpClientService {
 
