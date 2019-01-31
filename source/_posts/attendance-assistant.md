@@ -16,8 +16,8 @@ categories: Android
 APP下载地址：https://pan.baidu.com/s/1wO7HcY6J3lOq2me_k-2bZA  
 APP效果图：  
 <center>
-<img src=http://o6xqhzzif.bkt.clouddn.com/hexo/attendance-assistant/attendance_assistant_1.png height=480 width=270 />
-<img src=http://o6xqhzzif.bkt.clouddn.com/hexo/attendance-assistant/attendance_assistant_2.png height=480 width=270 />
-<img src=http://o6xqhzzif.bkt.clouddn.com/hexo/attendance-assistant/attendance_assistant_3.png height=480 width=270 />
-<img src=http://o6xqhzzif.bkt.clouddn.com/hexo/attendance-assistant/attendance_assistant_4.png height=480 width=270 />
+<img src=https://raw.githubusercontent.com/ckj375/img-folder/master/attendance-assistant/attendance_assistant_1.png height=480 width=270 />
+<img src=https://raw.githubusercontent.com/ckj375/img-folder/master/attendance-assistant/attendance_assistant_2.png height=480 width=270 />
+<img src=https://raw.githubusercontent.com/ckj375/img-folder/master/attendance-assistant/attendance_assistant_3.png height=480 width=270 />
+<img src=https://raw.githubusercontent.com/ckj375/img-folder/master/attendance-assistant/attendance_assistant_4.png height=480 width=270 />
 </center>

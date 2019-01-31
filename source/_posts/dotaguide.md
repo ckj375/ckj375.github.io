@@ -26,7 +26,7 @@ Dota攻略的核心功能就是提供英雄的出装，加点以及技能信息�
 项目地址：https://github.com/ckj375/DotaGuide  
 效果图：
 <center>
-![img](http://o6xqhzzif.bkt.clouddn.com/dotaguide1.jpg)
-![img](http://o6xqhzzif.bkt.clouddn.com/dotaguide2.jpg)
-![img](http://o6xqhzzif.bkt.clouddn.com/dotaguide3.jpg)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dotaguide/dotaguide1.jpg)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dotaguide/dotaguide2.jpg)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dotaguide/dotaguide3.jpg)
 </center>
