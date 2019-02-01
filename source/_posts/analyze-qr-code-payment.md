@@ -7,11 +7,11 @@ categories: 支付
 最近项目上需要集成第三方支付，采用扫二维码的方式进行付费。于是开始研读支付宝和微信支付平台的开发文档，根据官方文档总结了下扫码支付的通用流程：商户前台将商品参数发送至商户后台，商户后台生成内部订单号并用于请求支付平台创建预下单，支付平台创建完预订单后将订单二维码信息返还给商户，此时用户即可扫取二维码进行付款操作。  
 
 支付业务流程图：
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/analyze-qr-code-payment/picture1.png)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/analyze-qr-code-payment/picture1.png)
 
 <!-- more -->
 支付业务时序图：
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/analyze-qr-code-payment/picture2.png)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/analyze-qr-code-payment/picture2.png)
 
 **预下单请求**  
 对于扫码支付场景支付平台提供的SDK是服务端的，所以首先由商户客户端向商户后台请求预下单，商户后台收到请求后再调用支付平台提供的标准预下单接口。由于微信要求商户订单号长度32个字符以内，故商户订单号采用系统时间+随机数的方式生成。商户后台收到预下单请求后首先生成商户系统内部订单号，然后请求支付平台的预下单接口创建订单，支付平台会将二维码信息返回给商户平台，商户平台收到二维码信息后再返回给客户端。

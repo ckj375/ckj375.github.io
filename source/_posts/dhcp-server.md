@@ -9,22 +9,22 @@ categories: 技术
 <!-- more -->
 
 打开dhcpwiz.exe，选择本地连接，下一步；
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic01.png)  
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dhcp-server/pic01.png)  
 
 勾选HTTP (Web Server)，下一步；  
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic02.png)  
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dhcp-server/pic02.png)  
 
 修改IP-Pool从192.168.10.2开始，下一步；  
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic03.png)  
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dhcp-server/pic03.png)  
 
 勾选Overwrite existing file，点击"Write INI file"按钮写入配置文件，下一步；  
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic04.png)  
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dhcp-server/pic04.png)  
 
 依次点击Configure，Install，start，勾选Run DHCP server immediatly，完成。  
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic05.png)  
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dhcp-server/pic05.png)  
 
 点击Continue as try app按钮后，DHCP服务启动。  
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic06.png)  
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dhcp-server/pic06.png)  
 
-将Android盒子关机并用网线连接笔记本，随后将Android盒子开机，即可获取到ip，可登陆 http://127.0.0.1/dhcpstatus.xml 查看局域网ip，随后打开命令终端，输入adb connect ip（注：Windows 10下需指定端口号：adb connect ip:port）即可连接Android盒子，此时再插上东方有线的同轴线即可进行内网调试。 
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/dhcp-server/pic07.png)
+将Android盒子关机并用网线连接笔记本，随后将Android盒子开机，即可获取到ip，可登陆 http://127.0.0.1/dhcpstatus.xml 查看局域网ip，随后打开命令终端，输入adb connect ip（注：Windows 10下需指定端口号：adb connect ip:port）即可连接Android盒子，此时再插上东方有线的同轴线即可进行内网调试。
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/dhcp-server/pic07.png)

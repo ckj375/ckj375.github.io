@@ -14,10 +14,10 @@ categories: VPN
 
 点击stop按钮，选择左侧的Install new OS，推荐装Centos 6 x86
 
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/control_panel.png)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/bandwagon/control_panel.png)
 
 ### 2.安装完毕后可以直接选择Root shell-interactive启动命令窗口
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/shell_window.png)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/bandwagon/shell_window.png)
 
 ### 3.安装一键PPTP VPN
 
@@ -26,7 +26,7 @@ wget http://www.hi-vps.com/shell/vpn_centos6.sh
 sh vpn_centos6.sh
 
 选择1自动安装VPN，安装完成后，会自动生成一个默认的VPN用户名和随机密码。
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/bandwagon/install_window.png)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/bandwagon/install_window.png)
 
 ### 4.添加任意VPN账号
 

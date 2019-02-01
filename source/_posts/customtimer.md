@@ -9,7 +9,7 @@ categories: Android
 分享一个之前开发的Android倒计时特效.初始需求如下:以转盘形式设置倒计时时间,开始计时后,转盘箭头每秒转动一定角度,直至倒计时结束.Demo效果如下,拖动转盘箭头设置倒计时时间(一圈对应60秒),彩色部分对应当前倒计时剩余时间.由于渐变色的那段圆弧是随着倒计时时间不断缩小的,所以考虑先绘制一个渐变色圆环,再在渐变色圆环上覆盖灰色圆弧,最后在整个圆环视图顶层覆盖一个白色刻度环(其中灰色圆弧根据倒计时时间进度不断绘制弧度大小).
 <!-- more -->
 <center>
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/customtimer/demo.png)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/customtimer/demo.png)
 </center>
 ### 控件测量
 不管是绘制圆弧还是圆环,都需要用到一个核心API,即drawArc,源码如下.
@@ -45,7 +45,7 @@ public void drawArc(@NonNull RectF oval, float startAngle, float sweepAngle, boo
 ```
 RectF这个类包含一个矩形的四个单精度浮点坐标.矩形通过上下左右4个边的坐标来表示一个矩形.这些坐标值属性可以被直接访问，用width()和height()方法可以获取矩形的宽和高.示意图如下:
 <center>
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/customtimer/rectf.png)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/customtimer/rectf.png)
 </center>
 
 设置圆环属性,包括圆心坐标,半径,圆环颜色,粗细等.
@@ -66,7 +66,7 @@ mArcRect.left = xCenter - radius;
 mArcRect.right = xCenter + radius;
 ```
 <center>
-![img](http://o6xqhzzif.bkt.clouddn.com/hexo/customtimer/coordinate.png)
+![img](https://raw.githubusercontent.com/ckj375/img-folder/master/customtimer/coordinate.png)
 </center>
 
 ### 控件绘制
