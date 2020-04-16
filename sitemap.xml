@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chenkaijian.com/about/index.html</loc>
+    
+    <lastmod>2020-04-16T15:49:02.489Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chenkaijian.com/categories/index.html</loc>
     
     <lastmod>2020-04-16T15:17:43.243Z</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>http://chenkaijian.com/archives/index.html</loc>
-    
-    <lastmod>2020-04-16T15:17:43.242Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chenkaijian.com/about/index.html</loc>
     
     <lastmod>2020-04-16T15:17:43.242Z</lastmod>
     
@@ -44,14 +44,14 @@
   </url>
   
   <url>
-    <loc>http://chenkaijian.com/2017/02/04/the-first-day-of-work-in-2017/</loc>
+    <loc>http://chenkaijian.com/2017/07/28/use-macbook-set-up-LAN/</loc>
     
     <lastmod>2020-04-16T15:17:43.240Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chenkaijian.com/2017/07/28/use-macbook-set-up-LAN/</loc>
+    <loc>http://chenkaijian.com/2017/02/04/the-first-day-of-work-in-2017/</loc>
     
     <lastmod>2020-04-16T15:17:43.240Z</lastmod>
     
@@ -72,7 +72,7 @@
   </url>
   
   <url>
-    <loc>http://chenkaijian.com/2019/02/01/long-connection/</loc>
+    <loc>http://chenkaijian.com/2016/03/16/github-hexo-blog/</loc>
     
     <lastmod>2020-04-16T15:17:43.239Z</lastmod>
     
@@ -86,7 +86,7 @@
   </url>
   
   <url>
-    <loc>http://chenkaijian.com/2016/03/16/github-hexo-blog/</loc>
+    <loc>http://chenkaijian.com/2019/02/01/long-connection/</loc>
     
     <lastmod>2020-04-16T15:17:43.239Z</lastmod>
     
