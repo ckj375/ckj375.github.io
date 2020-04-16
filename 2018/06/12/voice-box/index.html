@@ -1,0 +1,619 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="智能音箱,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;这波618大促最火的可能就要数智能音箱了，各个大厂纷纷推出自有品牌的智能音箱，价格从几十到上千不等，天猫精灵方糖智能音箱活动价只要89元，算是性价比非常高的了，机智的我果断下单买了３台。由于最近正好在忙一个智能语音项目，所以对此比较感兴趣，也正好借此机会来聊下智能音响。">
+<meta name="keywords" content="智能音箱">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅析智能音箱">
+<meta property="og:url" content="http://chenkaijian.com/2018/06/12/voice-box/index.html">
+<meta property="og:site_name" content="ckj375">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;这波618大促最火的可能就要数智能音箱了，各个大厂纷纷推出自有品牌的智能音箱，价格从几十到上千不等，天猫精灵方糖智能音箱活动价只要89元，算是性价比非常高的了，机智的我果断下单买了３台。由于最近正好在忙一个智能语音项目，所以对此比较感兴趣，也正好借此机会来聊下智能音响。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-16T15:17:43.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅析智能音箱">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;这波618大促最火的可能就要数智能音箱了，各个大厂纷纷推出自有品牌的智能音箱，价格从几十到上千不等，天猫精灵方糖智能音箱活动价只要89元，算是性价比非常高的了，机智的我果断下单买了３台。由于最近正好在忙一个智能语音项目，所以对此比较感兴趣，也正好借此机会来聊下智能音响。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://chenkaijian.com/2018/06/12/voice-box/">
+
+  <title> 浅析智能音箱 | ckj375 </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ckj375</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                浅析智能音箱
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-12T18:39:26+08:00" content="2018-06-12">
+              2018-06-12
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/闲聊/" itemprop="url" rel="index">
+                    <span itemprop="name">闲聊</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">阅读
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;这波618大促最火的可能就要数智能音箱了，各个大厂纷纷推出自有品牌的智能音箱，价格从几十到上千不等，天猫精灵方糖智能音箱活动价只要89元，算是性价比非常高的了，机智的我果断下单买了３台。由于最近正好在忙一个智能语音项目，所以对此比较感兴趣，也正好借此机会来聊下智能音响。<br><a id="more"></a>  </p>
+<p>&emsp;&emsp;智能音响主要有五个硬件模块，分别是麦克风阵列、主控芯片、扩声单元、数字功放和通信模块。麦克风阵列，主要目的是拾取语音，加载数字音频处理算法可以实现降噪、回声抑制、去混响、声源定位，解决远场拾音问题,与远讲语音识别算法相匹配，麦克风阵列越多，降噪，识别率等效果越好，天猫方糖搭载的是２个麦克风阵列；主控芯片，完成的功能是对语音语义的解析理解，与手机等移动设备相类似，包括处理器、存储器、内存等核心部件。扩声单元，主要跟音质相关；数字功放模块，扬声器需要好的功放来支撑将我们播放的音频尽可能真实、低失真的传导到发声单元上；通讯模块是连接语音开放平台，获取内容资源，使用WIFI/蓝牙技术连接。  </p>
+<p>&emsp;&emsp;智能音箱价格差异那么大，影响的因素主要有这么几个：麦克风阵列个数，主控芯片，音质，内容资源。麦克风阵列个数越多，回声消除，降噪，识别效果等会越好；主控芯片其实跟智能手机芯片一个道理，越高级的处理速度越快；音质这个没个底，可以很low，也可以很高大上，就跟耳机一个道理；内容资源其实各家都差不多，基本都支持新闻，天气，音乐，相声，智能家居控制等等，主要差别还是在音乐版权这块，智能家居配套设备需要另行购置，暂不讨论。  </p>
+<p>&emsp;&emsp;智能音箱工作流程大致如下：用户通过唤醒词唤醒智能音箱，开始说话，此时用户所说内容会实时转换成文字，此过程类似于同声翻译，当用户停止说话后，系统判定用户已说完一句话，于是将最终语句交给主控芯片进行语义解析。智能音响支持很多功能，像音乐，天气，日历，新闻等，我们可以把这些功能理解成一个个技能，把用户说法理解成意图，然后把意图和技能通过语音开放平台串联起来。例如在语音开放平台的音乐技能中配置了“我想听某某的歌”这一说法，其中“某某”映射至歌手词库，在歌手词库中有很多歌手，那么当用户说“我想听任贤齐的歌”这句话时，首先会命中音乐技能，然后在歌手词库中找到“任贤齐”这个歌手，接下来就会播放对应的歌曲；再比如说在语音开放平台的音乐技能中配置了“我想听XX”这一说法，其中“XX”映射至歌曲词库，那么当用户说“我想听心太软”这句话时，首先会命中音乐技能，其次会在歌曲词库中寻找“心太软”这首歌，若能找到则播放。那么如果在相声技能中也配了“我想听某某”这一说法时，用户此时说“我想听小沈阳”时，该如何处理呢，此时语音开放平台会根据权值大小来判断优先命中音乐还是相声技能。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/智能音箱/" rel="tag">#智能音箱</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/git/" rel="next" title="学习Git看这一篇就够">
+                <i class="fa fa-chevron-left"></i> 学习Git看这一篇就够
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/01/long-connection/" rel="prev" title="初识长连接">
+                初识长连接 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="ckj375">
+          <p class="site-author-name" itemprop="name">ckj375</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ckj375</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

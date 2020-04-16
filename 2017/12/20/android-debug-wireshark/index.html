@@ -1,0 +1,644 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Wireshark,网络请求,Android调试,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="在Android网络请求调试过程中经常会碰到各种各样的问题，此时就需要通过抓取网络请求包来分析定位问题，通过网络请求包可以知晓请求头，请求参数，服务器状态响应码及响应内容等。抓取网络请求包的方式有多种，今天主要介绍网络抓包利器：Wireshark。 Wireshark抓取网络包打开Wireshark，点击菜单“捕获选项”按钮，弹出对话框如下，选中对应的网卡，然后点击“开始”按钮, 开始抓包。（注：">
+<meta name="keywords" content="Wireshark,网络请求,Android调试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android调试技巧之Wireshark抓包">
+<meta property="og:url" content="http://chenkaijian.com/2017/12/20/android-debug-wireshark/index.html">
+<meta property="og:site_name" content="ckj375">
+<meta property="og:description" content="在Android网络请求调试过程中经常会碰到各种各样的问题，此时就需要通过抓取网络请求包来分析定位问题，通过网络请求包可以知晓请求头，请求参数，服务器状态响应码及响应内容等。抓取网络请求包的方式有多种，今天主要介绍网络抓包利器：Wireshark。 Wireshark抓取网络包打开Wireshark，点击菜单“捕获选项”按钮，弹出对话框如下，选中对应的网卡，然后点击“开始”按钮, 开始抓包。（注：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic4.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic5.jpg">
+<meta property="og:updated_time" content="2020-04-16T15:17:43.235Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android调试技巧之Wireshark抓包">
+<meta name="twitter:description" content="在Android网络请求调试过程中经常会碰到各种各样的问题，此时就需要通过抓取网络请求包来分析定位问题，通过网络请求包可以知晓请求头，请求参数，服务器状态响应码及响应内容等。抓取网络请求包的方式有多种，今天主要介绍网络抓包利器：Wireshark。 Wireshark抓取网络包打开Wireshark，点击菜单“捕获选项”按钮，弹出对话框如下，选中对应的网卡，然后点击“开始”按钮, 开始抓包。（注：">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://chenkaijian.com/2017/12/20/android-debug-wireshark/">
+
+  <title> Android调试技巧之Wireshark抓包 | ckj375 </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ckj375</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android调试技巧之Wireshark抓包
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-20T17:07:56+08:00" content="2017-12-20">
+              2017-12-20
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">阅读
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Android网络请求调试过程中经常会碰到各种各样的问题，此时就需要通过抓取网络请求包来分析定位问题，通过网络请求包可以知晓请求头，请求参数，服务器状态响应码及响应内容等。抓取网络请求包的方式有多种，今天主要介绍网络抓包利器：Wireshark。</p>
+<h3 id="Wireshark抓取网络包"><a href="#Wireshark抓取网络包" class="headerlink" title="Wireshark抓取网络包"></a>Wireshark抓取网络包</h3><p>打开Wireshark，点击菜单“捕获选项”按钮，弹出对话框如下，选中对应的网卡，然后点击“开始”按钮, 开始抓包。（注：Wireshark是捕获机器上某一块网卡的网络包，当机器上有多块网卡的时候，需要选择一个网卡）<br><a id="more"></a></p>
+<p><img src="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic1.jpg" alt="img"></p>
+<p>开始抓包后，Wireshark便不停地捕获对应网卡上的网络包，此时打开Android模拟器并安装demo应用进行网络请求操作即可抓取网络请求包，点击Wireshark左上角的红色停止按钮停止抓包。此时Wireshark界面如下，主要由3部分构成：封包列表，封包详细信息和16进制数据。</p>
+<p><img src="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic2.jpg" alt="img"></p>
+<h3 id="Wireshark过滤规则"><a href="#Wireshark过滤规则" class="headerlink" title="Wireshark过滤规则"></a>Wireshark过滤规则</h3><p>抓取网络包后，如何在海量数据中筛选出需要的信息呢，这时就需要用到过滤器。以我的demo应用为例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">承载协议：HTTP + POST</span><br><span class="line">接口地址：http://112.4.10.122:8090/HDC/1.0/hop/svc/pay/toPay.ajax</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>协议过滤<br>如过滤http，直接在过滤器中输入http即可。</li>
+<li>ip过滤<br>过滤源ip或目的ip。在Wireshark过滤器中输入过滤条件，如查找目的地址为112.4.10.122的包，ip.dst==112.4.10.122；查找源地址为ip.src==10.200.52.66</li>
+<li>端口过滤<br>如过滤8090端口，在过滤器中输入tcp.port==8090，这条规则是把源端口和目的端口为8090的都过滤出来。使用tcp.dstport==8090只过滤目的端口为80的包，tcp.srcport==8090只过滤源端口为8090的包。</li>
+<li>Http模式过滤<br>如过滤get包，http.request.method==”GET”,过滤post包，http.request.method==”POST”</li>
+<li>逻辑运算符and/or<br>过滤两种条件时，使用and连接，如过滤ip为192.168.101.8并且为http协议的，ip.src==192.168.101.8 and http</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic3.jpg" alt="img"></p>
+<h3 id="网络包分析"><a href="#网络包分析" class="headerlink" title="网络包分析"></a>网络包分析</h3><p>在封包列表界面点击需要分析的封包，即可显示该封包的详细信息。</p>
+<p>请求包信息如下：</p>
+<p><img src="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic4.jpg" alt="img"></p>
+<p>响应包信息如下：</p>
+<p><img src="https://raw.githubusercontent.com/ckj375/img-folder/master/android-debug-wireshark/pic5.jpg" alt="img"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Wireshark/" rel="tag">#Wireshark</a>
+          
+            <a href="/tags/网络请求/" rel="tag">#网络请求</a>
+          
+            <a href="/tags/Android调试/" rel="tag">#Android调试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/20/customtimer/" rel="next" title="Android自定义View之转盘式倒计时">
+                <i class="fa fa-chevron-left"></i> Android自定义View之转盘式倒计时
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/12/android-gradle-productflavors/" rel="prev" title="Gradle中productFlavors使用详解">
+                Gradle中productFlavors使用详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="ckj375">
+          <p class="site-author-name" itemprop="name">ckj375</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Wireshark抓取网络包"><span class="nav-number">1.</span> <span class="nav-text">Wireshark抓取网络包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wireshark过滤规则"><span class="nav-number">2.</span> <span class="nav-text">Wireshark过滤规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络包分析"><span class="nav-number">3.</span> <span class="nav-text">网络包分析</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ckj375</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

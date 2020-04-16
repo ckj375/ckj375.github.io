@@ -1,0 +1,664 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Git,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="前言上大学那会儿都流行使用SVN，直到工作后才真正接触并使用Git，发现Git真是个好东西，相见恨晚。一直想写一篇关于Git使用的文章，但是网上类似的教程有很多，所以就懒得写了，平时碰到问题随手上网一查然后记录在印象笔记上，久而久之，记录的越来越多，发现平时工作中用到的无非那么几个指令，所以把这些常用指令整理了下，只要搞懂下面这些指令，基本上能应付工作中90%的Git场景。">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Git看这一篇就够">
+<meta property="og:url" content="http://chenkaijian.com/2018/04/26/git/index.html">
+<meta property="og:site_name" content="ckj375">
+<meta property="og:description" content="前言上大学那会儿都流行使用SVN，直到工作后才真正接触并使用Git，发现Git真是个好东西，相见恨晚。一直想写一篇关于Git使用的文章，但是网上类似的教程有很多，所以就懒得写了，平时碰到问题随手上网一查然后记录在印象笔记上，久而久之，记录的越来越多，发现平时工作中用到的无非那么几个指令，所以把这些常用指令整理了下，只要搞懂下面这些指令，基本上能应付工作中90%的Git场景。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-16T15:17:43.239Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习Git看这一篇就够">
+<meta name="twitter:description" content="前言上大学那会儿都流行使用SVN，直到工作后才真正接触并使用Git，发现Git真是个好东西，相见恨晚。一直想写一篇关于Git使用的文章，但是网上类似的教程有很多，所以就懒得写了，平时碰到问题随手上网一查然后记录在印象笔记上，久而久之，记录的越来越多，发现平时工作中用到的无非那么几个指令，所以把这些常用指令整理了下，只要搞懂下面这些指令，基本上能应付工作中90%的Git场景。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://chenkaijian.com/2018/04/26/git/">
+
+  <title> 学习Git看这一篇就够 | ckj375 </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ckj375</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                学习Git看这一篇就够
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-26T14:27:44+08:00" content="2018-04-26">
+              2018-04-26
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">阅读
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>上大学那会儿都流行使用SVN，直到工作后才真正接触并使用Git，发现Git真是个好东西，相见恨晚。一直想写一篇关于Git使用的文章，但是网上类似的教程有很多，所以就懒得写了，平时碰到问题随手上网一查然后记录在印象笔记上，久而久之，记录的越来越多，发现平时工作中用到的无非那么几个指令，所以把这些常用指令整理了下，只要搞懂下面这些指令，基本上能应付工作中90%的Git场景。<br><a id="more"></a></p>
+<h3 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h3><p><strong>1.建立本地仓库</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo</span><br><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in D:/GitDemo/.git/</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.配置用户名和邮箱</strong><br>每次git提交时都会引用用户名和邮箱，随更新内容一起被纳入历史记录。若用了[–global]参数则修改的是用户主目录下的配置文件，所有项目会默认使用该配置文件；若需要在某项目中使用特定的用户名和邮箱，不加[–global]参数重新配置即可，配置文件保存在当前项目的.git目录下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo (master)</span><br><span class="line">$ git config --global user.name &quot;kaijianchen&quot;</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo (master)</span><br><span class="line">$ git config --global user.email &quot;kaijianchen@pptv.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>查看配置结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo (master)</span><br><span class="line">$ git config --list</span><br><span class="line">user.name=kaijianchen</span><br><span class="line">user.email=kaijianchen@pptv.com</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>试着提交一笔记录，然后使用git log查看提交记录时能看到提交人用户名和邮箱。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo (master)</span><br><span class="line">$ git log</span><br><span class="line">commit 82e807ae6684ee5b5debf01fb94fe02d27530df9 (HEAD -&gt; master)</span><br><span class="line">Author: kaijianchen &lt;ckj375@gmail.com&gt;</span><br><span class="line">Date:   Wed Apr 25 17:11:25 2018 +0800</span><br><span class="line">    添加文件</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.本地仓库导出及克隆</strong><br>将本地Git仓库导出为裸仓库（即不包含工作区和暂存区的仓库，只包含commit提交后的数据）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d</span><br><span class="line">$ git clone --bare GitDemo GitDemo.git</span><br><span class="line">Cloning into bare repository &apos;GitDemo.git&apos;...</span><br><span class="line">done.</span><br></pre></td></tr></table></figure></p>
+<p>克隆本地仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d</span><br><span class="line">$ git clone GitDemo.git GitDemo1</span><br><span class="line">Cloning into &apos;GitDemo1&apos;...</span><br><span class="line">done.</span><br></pre></td></tr></table></figure></p>
+<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a>远程仓库相关命令</h3><p><strong>1.克隆远程仓库</strong><br>git clone &lt;url&gt; [shortname]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d</span><br><span class="line">$ git clone git@github.com:ckj375/GitDemo.git GitDemo1</span><br><span class="line">Cloning into &apos;GitDemo1&apos;...</span><br><span class="line">remote: Counting objects: 3, done.</span><br><span class="line">remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0</span><br><span class="line">Receiving objects: 100% (3/3), done.</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.查看当前远程仓库地址</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git remote -v</span><br><span class="line">origin  git@github.com:ckj375/GitDemo.git (fetch)</span><br><span class="line">origin  git@github.com:ckj375/GitDemo.git (push)</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.移除远程仓库</strong><br>git remote rm &lt;name&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git remote rm origin</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git remote -v</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.添加远程仓库及更新推送</strong><br>git remote add &lt;name&gt; &lt;url&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git remote add origin git@github.com:ckj375/GitDemo.git</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git remote -v</span><br><span class="line">origin  git@github.com:ckj375/GitDemo.git (fetch)</span><br><span class="line">origin  git@github.com:ckj375/GitDemo.git (push)</span><br></pre></td></tr></table></figure></p>
+<p>git pull &lt;name&gt; &lt;branch&gt; –allow-unrelated-histories<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git pull origin master --allow-unrelated-histories</span><br><span class="line">From github.com:ckj375/GitDemo</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line"> * [new branch]      master     -&gt; origin/master</span><br><span class="line">Already up to date.</span><br></pre></td></tr></table></figure></p>
+<p> git push -u &lt;name&gt; &lt;branch&gt;<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git push -u origin master</span><br><span class="line">Everything up-to-date</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure></p>
+<p><strong>5.添加多个远程仓库及推送</strong><br>git remote add &lt;name&gt; &lt;url&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git remote add origin git@github.com:ckj375/GitDemo.git</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git remote add origin1 git@github.com:ckj375/GitDemo_copy.git</span><br></pre></td></tr></table></figure></p>
+<p>查看当前所有远程库地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git remote -v</span><br><span class="line">origin  git@github.com:ckj375/GitDemo.git (fetch)</span><br><span class="line">origin  git@github.com:ckj375/GitDemo.git (push)</span><br><span class="line">origin1 git@github.com:ckj375/GitDemo_copy.git (fetch)</span><br><span class="line">origin1 git@github.com:ckj375/GitDemo_copy.git (push)</span><br></pre></td></tr></table></figure></p>
+<p>将某一本地分支推送到某一远程仓库使用git push -u &lt;name&gt; &lt;branch&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git push -u origin1 master</span><br><span class="line">Counting objects: 8, done.</span><br><span class="line">Delta compression using up to 4 threads.</span><br><span class="line">Compressing objects: 100% (4/4), done.</span><br><span class="line">Writing objects: 100% (8/8), 1.05 KiB | 359.00 KiB/s, done.</span><br><span class="line">Total 8 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:ckj375/GitDemo_copy.git</span><br><span class="line"> * [new branch]      master -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;origin1&apos;.</span><br></pre></td></tr></table></figure></p>
+<h3 id="分支操作相关命令"><a href="#分支操作相关命令" class="headerlink" title="分支操作相关命令"></a>分支操作相关命令</h3><p><strong>1.查看本地分支，远程分支，所有分支</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git branch</span><br><span class="line">* master</span><br><span class="line">ianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git branch -r</span><br><span class="line">  origin/master</span><br><span class="line">ianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git branch -a</span><br><span class="line">* master</span><br><span class="line">  remotes/origin/master</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.本地分支添加，切换，重命名，删除</strong><br>git branch &lt;branch&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git branch new_branch</span><br></pre></td></tr></table></figure></p>
+<p>git checkout &lt;branch&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git checkout new_branch</span><br><span class="line">Switched to branch &apos;new_branch&apos;</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (new_branch)</span><br></pre></td></tr></table></figure></p>
+<p>git branch -m &lt;old branch&gt; &lt;new branch&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (new_branch)</span><br><span class="line">$ git branch -m new_branch new_branch2</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (new_branch2)</span><br></pre></td></tr></table></figure></p>
+<p>若要删除某本地分支，须先切到其他分支上，再执行git branch -d &lt;branch&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git branch -d new_branch2</span><br><span class="line">Deleted branch new_branch2 (was d4c56f5).</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.本地分支push到远程，远程分支删除及重命名</strong><br>git push &lt;name&gt; &lt;branch&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git push origin new_branch</span><br><span class="line">Total 0 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:ckj375/GitDemo.git</span><br><span class="line"> * [new branch]      new_branch -&gt; new_branch</span><br></pre></td></tr></table></figure></p>
+<p>删除远程分支使用git push &lt;name&gt; –delete &lt;branch&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git push origin --delete new_branch</span><br><span class="line">To github.com:ckj375/GitDemo.git</span><br><span class="line"> - [deleted]         new_branch</span><br></pre></td></tr></table></figure></p>
+<p>重命名远程分支其实就是先删除远程分支，然后重命名本地分支并push到远程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete old_branch</span><br><span class="line">git branch -m old_branch new_branch</span><br><span class="line">git push origin new_branch</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.分支合并</strong><br>merge 是一个合并操作，会将两个分支的修改合并在一起，默认会提交合并中修改的内容。<br>rebase 其实并没有进行合并操作，只是提取了当前分支的修改，并将其复制到目标分支的最新提交后面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A — B — C            master</span><br><span class="line">         \</span><br><span class="line">          D — E      new_branch</span><br></pre></td></tr></table></figure></p>
+<p>git merge &lt;branch_name&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git merge new_branch</span><br></pre></td></tr></table></figure></p>
+<p>将new_branch分支merge至master分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A — B — C ————— F    master</span><br><span class="line">         \     /</span><br><span class="line">          D — E      new_branch</span><br></pre></td></tr></table></figure></p>
+<p>git rebase &lt;branch_name&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git rebase new_branch</span><br></pre></td></tr></table></figure></p>
+<p>将new_branch分支rebase至master分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A — B — C — D&apos; — E&apos;  master</span><br><span class="line">         \</span><br><span class="line">          D — E      new_branch</span><br></pre></td></tr></table></figure></p>
+<h3 id="文件操作相关命令"><a href="#文件操作相关命令" class="headerlink" title="文件操作相关命令"></a>文件操作相关命令</h3><p><strong>1.查看文件修改状态</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is ahead of &apos;origin1/master&apos; by 1 commit.</span><br><span class="line">  (use &quot;git push&quot; to publish your local commits)</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   README.md</span><br><span class="line">        deleted:    README2.md</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        README3.md</span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.查看文件修改内容</strong><br>查看某一文件的具体改动内容使用git diff &lt;文件路径&gt;，若需查看所有文件改动内容则使用git diff<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git diff README.md</span><br><span class="line">diff --git a/README.md b/README.md</span><br><span class="line">index c14ae46..4584689 100644</span><br><span class="line">--- a/README.md</span><br><span class="line">+++ b/README.md</span><br><span class="line">@@ -2,3 +2,5 @@</span><br><span class="line"> Git演示Demo</span><br><span class="line"> Hello World</span><br><span class="line">+</span><br><span class="line">+Hello Android</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.撤销修改</strong><br>撤销某一文件的修改使用git checkout &lt;文件路径&gt; ，若需撤销所有修改（新增文件除外）使用git checkout .<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git checkout README.md</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git checkout .</span><br></pre></td></tr></table></figure></p>
+<p>若需删除新增文件则使用rm &lt;文件路径&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ rm README3.md</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.将修改从工作区添加至暂存区</strong><br>添加某一文件的修改至暂存区使用git add/rm &lt;文件路径&gt;，若需提交所有修改至暂存区则使用git add .<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git rm README2.md</span><br><span class="line">rm &apos;README.md&apos;</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git add README.md</span><br></pre></td></tr></table></figure></p>
+<p><strong>5.将修改从暂存区移回工作区</strong><br>若需要从暂存区移除某一文件的修改则使用git reset HEAD &lt;文件路径&gt;，若需要移除所有修改，则使用git reset HEAD .<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git reset HEAD test.txt</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M       test.txt</span><br></pre></td></tr></table></figure></p>
+<p><strong>6.将修改从暂存区提交至本地仓库</strong><br>git commit  -m “[注释]”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git commit -m &quot;修改备注&quot;</span><br><span class="line">[master d4c56f5] 修改备注</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure></p>
+<p><strong>7.查看本地仓库提交记录及commit记录回退</strong><br>查看所有记录使用git log，若需查看最近2条记录则使用git log -2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git log -2</span><br><span class="line">commit df6e17f2ab6b441340d265af9dd15d625122e599 (HEAD -&gt; master)</span><br><span class="line">Author: chenkaijian &lt;ckj375@gmail.com&gt;</span><br><span class="line">Date:   Mon Apr 23 17:53:54 2018 +0800</span><br><span class="line">    修改README</span><br><span class="line">commit bc2bd1a16199639cd303403f2183d0ea0d0bca60</span><br><span class="line">Author: chenkaijian &lt;ckj375@gmail.com&gt;</span><br><span class="line">Date:   Mon Apr 23 17:48:11 2018 +0800</span><br><span class="line">    修改</span><br></pre></td></tr></table></figure></p>
+<p>commit记录回退分为软回退git reset –soft &lt;commit_id&gt;和硬回退git reset –hard &lt;commit_id&gt;，例如当前版本为C，现回退至A版本，如果是软回退，C和A版本间的差异内容会保留在暂存区，如果是硬回退则会彻底删除该部分修改内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git reset --soft bc2bd1a16199639cd303403f2183d0ea0d0bca60</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is ahead of &apos;origin/master&apos; by 2 commits.</span><br><span class="line">  (use &quot;git push&quot; to publish your local commits)</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        modified:   README.md</span><br><span class="line">        modified:   README2.md</span><br><span class="line">$ git log -2</span><br><span class="line">commit bc2bd1a16199639cd303403f2183d0ea0d0bca60 (HEAD -&gt; master)</span><br><span class="line">Author: chenkaijian &lt;ckj375@gmail.com&gt;</span><br><span class="line">Date:   Mon Apr 23 17:48:11 2018 +0800</span><br><span class="line">    修改</span><br></pre></td></tr></table></figure></p>
+<p><strong>8.对比两次commit记录差异</strong><br>查看commitB相对于commitA修改了哪些内容，可以使用git diff &lt;A_commit_id&gt; &lt;B_commit_id&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git diff d4c56f56420561f777f33d8cbdc2412e804e4df3 477f824a3ef614a4d153cc04d10065146b3c6048</span><br><span class="line">diff --git a/README.md b/README.md</span><br><span class="line">index a69d1cf..1cecf2e 100644</span><br><span class="line">--- a/README.md</span><br><span class="line">+++ b/README.md</span><br><span class="line">@@ -1,2 +1,4 @@</span><br><span class="line"> # GitDemo</span><br><span class="line"> Git演示Demo</span><br><span class="line">+hello world</span><br></pre></td></tr></table></figure></p>
+<p><strong>9.将修改推送至远程仓库及更新</strong><br>如果当前分支只有一个追踪分支，那么主机名都可以省略；如果当前分支与多个主机存在追踪关系git push -u origin master 上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机， 不带任何参数的git push，默认只推送当前分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git push</span><br><span class="line">Counting objects: 3, done.</span><br><span class="line">Delta compression using up to 4 threads.</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 299 bytes | 149.00 KiB/s, done.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:ckj375/GitDemo.git</span><br><span class="line">   430d4b8..d4c56f5  master -&gt; master</span><br></pre></td></tr></table></figure></p>
+<p>git pull用法基本同git push，默认只更新当前分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git pull</span><br><span class="line">Already up to date.</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tag操作相关命令"><a href="#Tag操作相关命令" class="headerlink" title="Tag操作相关命令"></a>Tag操作相关命令</h3><p><strong>1.本地tag添加，查看，切换，删除</strong><br>git tag -a &lt;tagname&gt; -m “[注释]”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git tag -a v1.0 -m &quot;version 1.0&quot;</span><br><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git tag -a v1.1 -m &quot;version 1.1&quot;</span><br></pre></td></tr></table></figure></p>
+<p>git tag<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git tag</span><br><span class="line">v1.0</span><br></pre></td></tr></table></figure></p>
+<p>git checkout &lt;tagname&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git checkout v1.0</span><br><span class="line">Note: checking out &apos;v1.0&apos;.</span><br></pre></td></tr></table></figure></p>
+<p>git tag -d &lt;tagname&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git tag -d v1.0</span><br><span class="line">Deleted tag &apos;v1.0&apos; (was a861dd0)</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.本地tag推送至远程仓库，远程tag删除</strong><br>将本地tag推送至远程仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git push --tags</span><br><span class="line">Counting objects: 1, done.</span><br><span class="line">Writing objects: 100% (1/1), 161 bytes | 161.00 KiB/s, done.</span><br><span class="line">Total 1 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:ckj375/GitDemo.git</span><br><span class="line"> * [new tag]         v1.0 -&gt; v1.0</span><br></pre></td></tr></table></figure></p>
+<p>若需删除远程tag则使用git push &lt;name&gt; –delete tag &lt;tagname&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kaijianchen@WIN7-1712111933 MINGW64 /d/GitDemo1 (master)</span><br><span class="line">$ git push origin --delete tag v1.0</span><br><span class="line">To github.com:ckj375/GitDemo.git</span><br><span class="line"> - [deleted]         v1.0</span><br></pre></td></tr></table></figure></p>
+<h3 id="常见问题汇总"><a href="#常见问题汇总" class="headerlink" title="常见问题汇总"></a>常见问题汇总</h3><p><strong>1.克隆代码仓库提示Filename too long</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config [--global] core.longpaths true</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.gitignore文件忽略失败</strong><br>.gitignore只能忽略原来没有被track的文件，如果文件已经被纳入了版本管理中，则修改.gitignore是无效的，必须先把本地缓存删除然后再提交。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;update .gitignore&apos;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag">#Git</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/11/attendance-assistant/" rel="next" title="Android开发实战之考勤助手">
+                <i class="fa fa-chevron-left"></i> Android开发实战之考勤助手
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/12/voice-box/" rel="prev" title="浅析智能音箱">
+                浅析智能音箱 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="ckj375">
+          <p class="site-author-name" itemprop="name">ckj375</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git配置"><span class="nav-number">2.</span> <span class="nav-text">Git配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库相关命令"><span class="nav-number">3.</span> <span class="nav-text">远程仓库相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支操作相关命令"><span class="nav-number">4.</span> <span class="nav-text">分支操作相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作相关命令"><span class="nav-number">5.</span> <span class="nav-text">文件操作相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tag操作相关命令"><span class="nav-number">6.</span> <span class="nav-text">Tag操作相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题汇总"><span class="nav-number">7.</span> <span class="nav-text">常见问题汇总</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ckj375</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

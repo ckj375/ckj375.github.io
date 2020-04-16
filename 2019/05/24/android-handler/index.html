@@ -1,0 +1,629 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Handler,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="前言在写这篇博客之前，一直在想网上已经有那么多Handler相关的技术文章了，为啥还要再写一篇呢？读了很多Handler相关的技术文章，发现不同的讲解思路会影响读者的认知，有的人总结的清晰明了，而有的人则容易把人带入误区，所以我决定按自己的思路写一篇关于Handler的博客，尽可能的简洁明了，希望对自己以及他人有所帮助。">
+<meta name="keywords" content="Handler">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android源码解析(二)：Handler">
+<meta property="og:url" content="http://chenkaijian.com/2019/05/24/android-handler/index.html">
+<meta property="og:site_name" content="ckj375">
+<meta property="og:description" content="前言在写这篇博客之前，一直在想网上已经有那么多Handler相关的技术文章了，为啥还要再写一篇呢？读了很多Handler相关的技术文章，发现不同的讲解思路会影响读者的认知，有的人总结的清晰明了，而有的人则容易把人带入误区，所以我决定按自己的思路写一篇关于Handler的博客，尽可能的简洁明了，希望对自己以及他人有所帮助。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/ckj375/img-folder/blob/master/android-handler/pic01.png?raw=true">
+<meta property="og:image" content="https://github.com/ckj375/img-folder/blob/master/android-handler/pic02.png?raw=true">
+<meta property="og:image" content="https://github.com/ckj375/img-folder/blob/master/android-handler/pic03.png?raw=true">
+<meta property="og:updated_time" content="2020-04-16T15:17:43.236Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android源码解析(二)：Handler">
+<meta name="twitter:description" content="前言在写这篇博客之前，一直在想网上已经有那么多Handler相关的技术文章了，为啥还要再写一篇呢？读了很多Handler相关的技术文章，发现不同的讲解思路会影响读者的认知，有的人总结的清晰明了，而有的人则容易把人带入误区，所以我决定按自己的思路写一篇关于Handler的博客，尽可能的简洁明了，希望对自己以及他人有所帮助。">
+<meta name="twitter:image" content="https://github.com/ckj375/img-folder/blob/master/android-handler/pic01.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://chenkaijian.com/2019/05/24/android-handler/">
+
+  <title> Android源码解析(二)：Handler | ckj375 </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ckj375</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android源码解析(二)：Handler
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-05-24T18:18:33+08:00" content="2019-05-24">
+              2019-05-24
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">阅读
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在写这篇博客之前，一直在想网上已经有那么多Handler相关的技术文章了，为啥还要再写一篇呢？读了很多Handler相关的技术文章，发现不同的讲解思路会影响读者的认知，有的人总结的清晰明了，而有的人则容易把人带入误区，所以我决定按自己的思路写一篇关于Handler的博客，尽可能的简洁明了，希望对自己以及他人有所帮助。</p>
+<a id="more"></a>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>1.Handler的作用<br>2.Handler消息机制原理<br>-2.1MessageQueue和Looper的关系？<br>-2.2 Handler如何发送消息？<br>-2.3 Handler如何接收消息？<br>-2.4 Handler消息机制原理图</p>
+<h3 id="Handler的作用"><a href="#Handler的作用" class="headerlink" title="Handler的作用"></a>Handler的作用</h3><p>Handler主要用于线程间通信。</p>
+<p>举个例子：<br><img src="https://github.com/ckj375/img-folder/blob/master/android-handler/pic01.png?raw=true" alt="img"><br>在子线程中执行耗时操作，当执行完毕后需要通知主线程刷新UI，那么问题来了，子线程怎么去通知主线程呢？这时我们就可以借助Handler，首先在主线程中创建一个Handler对象，当子线程执行完耗时操作后，在子线程中调用刚才创建的Handler对象发送消息，随后在主线程中通过Handler对象的handleMessage回调方法去处理消息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 主线程中创建Handler对象，并通过回调方法接收处理消息</span><br><span class="line">private Handler mHandler = new Handler() &#123;</span><br><span class="line">      @Override</span><br><span class="line">      public void handleMessage(Message msg) &#123;</span><br><span class="line">          // 处理消息</span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 子线程中通过Handler对象发送消息</span><br><span class="line">new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">     public void run() &#123;</span><br><span class="line">         // 执行耗时操作...</span><br><span class="line">         Message msg = new Message();</span><br><span class="line">         mHandler.sendMessage(msg);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+<h3 id="Handler消息机制原理"><a href="#Handler消息机制原理" class="headerlink" title="Handler消息机制原理"></a>Handler消息机制原理</h3><p>Handler消息机制涉及到几个重要的类，分别是Looper（消息循环器），MessageQueue（即消息队列，用于存放消息，它基于单链表的数据结构）和Message。简单概述就是Handler对象发送Message给MessageQueue，Looper从MessageQueue中取出Message交还给Handler对象处理。</p>
+<h4 id="MessageQueue和Looper的关系？"><a href="#MessageQueue和Looper的关系？" class="headerlink" title="MessageQueue和Looper的关系？"></a>MessageQueue和Looper的关系？</h4><p>MessageQueue是在Looper中创建的，创建Looper对象时会同时创建一个MessageQueue对象（注：主线程中无需手动创建Looper对象，系统已为我们自动创建Looper对象并开启消息循环），由此可知Looper对象和MessageQueue对象是一对一的关系。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Looper构造器</span><br><span class="line">private Looper(boolean quitAllowed) &#123;</span><br><span class="line">    mQueue = new MessageQueue(quitAllowed);</span><br><span class="line">    mThread = Thread.currentThread();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Looper用于开启消息循环，检测MessageQueue中是否有消息，若有消息则将消息依次分发出去，若没有消息则阻塞直到有消息过来为止。一个线程对应一个Looper，一个Looper对应一个MessageQueue。创建Handler对象时会通过Looper.myLooper()方法获取当前线程所对应的Looper对象，若未获取到Looper对象则会抛出运行时异常，所以在子线程中创建Handler对象时须手动创建Looper对象并开启消息循环。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// Handler构造器</span><br><span class="line">public Handler() &#123;</span><br><span class="line">    this(null, false);</span><br><span class="line">&#125;</span><br><span class="line">public Handler(Callback callback, boolean async) &#123;</span><br><span class="line">    if (FIND_POTENTIAL_LEAKS) &#123;</span><br><span class="line">        final Class&lt;? extends Handler&gt; klass = getClass();</span><br><span class="line">        if ((klass.isAnonymousClass() || klass.isMemberClass() || klass.isLocalClass()) &amp;&amp;</span><br><span class="line">                (klass.getModifiers() &amp; Modifier.STATIC) == 0) &#123;</span><br><span class="line">            Log.w(TAG, &quot;The following Handler class should be static or leaks might occur: &quot; +</span><br><span class="line">                klass.getCanonicalName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    mLooper = Looper.myLooper();</span><br><span class="line">    if (mLooper == null) &#123;</span><br><span class="line">        throw new RuntimeException(</span><br><span class="line">            &quot;Can&apos;t create handler inside thread that has not called Looper.prepare()&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    mQueue = mLooper.mQueue;</span><br><span class="line">    mCallback = callback;</span><br><span class="line">    mAsynchronous = async;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>举个例子，如果需要在子线程中弹出Toast，则代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">new Thread(new Runnable() &#123;</span><br><span class="line">        public void run() &#123;</span><br><span class="line">        Looper.prepare();// 手动创建Looper对象</span><br><span class="line">        Toast.makeText(…).show();// Toast的创建依赖于创建Handler对象</span><br><span class="line">        Looper.loop();// 开启消息循环</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过分析源码我们可以看到当调用Looper.prepare()后会创建一个Looper对象，并和当前线程进行绑定，若当前线程已经绑定了Looper对象，则不会重复创建Looper对象，所以说一个线程对应一个Looper对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void prepare() &#123;</span><br><span class="line">       prepare(true);</span><br><span class="line">&#125;</span><br><span class="line">private static void prepare(boolean quitAllowed) &#123;</span><br><span class="line">       if (sThreadLocal.get() != null) &#123;</span><br><span class="line">           throw new RuntimeException(&quot;Only one Looper may be created per thread&quot;);</span><br><span class="line">       &#125;</span><br><span class="line">       sThreadLocal.set(new Looper(quitAllowed));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Handler如何发送消息？"><a href="#Handler如何发送消息？" class="headerlink" title="Handler如何发送消息？"></a>Handler如何发送消息？</h4><p><img src="https://github.com/ckj375/img-folder/blob/master/android-handler/pic02.png?raw=true" alt="img"><br>Handler发送Message给MessageQueue，我们以sendMessage(Message msg)为例，经过一系列的方法最终会走到enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis)方法，将消息插入到消息队列中，按发送的时间大小进行排列，与此同时，会通过msg.target = this将当前Handler对象赋给Message对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public final boolean sendMessage(Message msg)</span><br><span class="line">    &#123;</span><br><span class="line">        return sendMessageDelayed(msg, 0);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">private boolean enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis) &#123;</span><br><span class="line">        msg.target = this;</span><br><span class="line">        if (mAsynchronous) &#123;</span><br><span class="line">            msg.setAsynchronous(true);</span><br><span class="line">        &#125;</span><br><span class="line">        return queue.enqueueMessage(msg, uptimeMillis);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Handler如何接收消息？"><a href="#Handler如何接收消息？" class="headerlink" title="Handler如何接收消息？"></a>Handler如何接收消息？</h4><p>通过调用Looper.loop()开启消息循环后，会依次取出消息队列中的Message，并调用msg.target.dispatchMessage(msg)，这个target前面有提到，就是Handler对象自身，Handler在发送消息时会将自身引入到Message中。这下我们就明白了，消息时通过Handler的dispatchMessage(msg)方法进行分发，然后通过Handler的回调方法handleMessage(msg)去处理消息。</p>
+<h4 id="Handler消息机制流程图"><a href="#Handler消息机制流程图" class="headerlink" title="Handler消息机制流程图"></a>Handler消息机制流程图</h4><p>最后我们再来看一下整个消息机制的流程图：<br><img src="https://github.com/ckj375/img-folder/blob/master/android-handler/pic03.png?raw=true" alt="img"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Handler/" rel="tag">#Handler</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/01/long-connection/" rel="next" title="初识长连接">
+                <i class="fa fa-chevron-left"></i> 初识长连接
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="ckj375">
+          <p class="site-author-name" itemprop="name">ckj375</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handler的作用"><span class="nav-number">3.</span> <span class="nav-text">Handler的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handler消息机制原理"><span class="nav-number">4.</span> <span class="nav-text">Handler消息机制原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MessageQueue和Looper的关系？"><span class="nav-number">4.1.</span> <span class="nav-text">MessageQueue和Looper的关系？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Handler如何发送消息？"><span class="nav-number">4.2.</span> <span class="nav-text">Handler如何发送消息？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Handler如何接收消息？"><span class="nav-number">4.3.</span> <span class="nav-text">Handler如何接收消息？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Handler消息机制流程图"><span class="nav-number">4.4.</span> <span class="nav-text">Handler消息机制流程图</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ckj375</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
